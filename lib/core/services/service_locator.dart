@@ -90,7 +90,7 @@ class ServicesLocator {
     sl.registerLazySingleton<BaseForgetRepository>(
         () => ForgetRepository(sl()));
 
-    sl.registerFactory(() => FilterCubit(sl()));
+    sl.registerFactory(() => FilterCubit(sl(), sl()));
     sl.registerLazySingleton<BaseFilterRemoteDataSource>(
         () => FilterRemoteDataSource());
     sl.registerLazySingleton<BaseFilterRepository>(

@@ -59,3 +59,13 @@ class GetSubCategoryDetailError extends FilterState {
 }
 
 class SubCategoryAndBrandVisibile extends FilterState {}
+
+class AddOrRemoveFavFilterLoading extends FilterState {}
+
+class AddOrRemoveFavFilterSuccess extends FilterState {}
+
+class AddOrRemoveFavFilterError extends FilterState {
+  final String? errorMsg;
+
+  AddOrRemoveFavFilterError(this.errorMsg);
+}

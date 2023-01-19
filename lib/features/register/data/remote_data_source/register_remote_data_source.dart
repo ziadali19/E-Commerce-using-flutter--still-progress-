@@ -1,9 +1,8 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:dio/src/response.dart';
+
 import 'package:e_commerce/core/network/dio_helper.dart';
 import 'package:e_commerce/core/network/error_message_model.dart';
-import 'package:e_commerce/core/network/failure.dart';
+
 import 'package:e_commerce/core/network/network_exception.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/register/data/model/register_model.dart';
