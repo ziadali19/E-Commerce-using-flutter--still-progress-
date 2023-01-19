@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce/features/favorite/data/repository/favorite_repository.dart';
 import 'package:e_commerce/features/filter/data/repository/filter_repository.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -7,19 +8,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/failure.dart';
+import '../../../../core/services/service_locator.dart';
 import '../../../categories/data/models/category_details_model.dart';
 import '../../../categories/data/models/sub_category_details_model.dart';
+import '../../../favorite/controller/cubit/favorite_cubit.dart';
 import '../../../home/data/model/categories_model.dart';
 import '../../../home/data/model/product_details_model.dart';
 
 part 'filter_state.dart';
 
 class FilterCubit extends Cubit<FilterState> {
-  FilterCubit(this.baseFilterRepository) : super(FilterInitial());
+  FilterCubit(this.baseFilterRepository, this.baseFavoriteRepository)
+      : super(FilterInitial());
   final BaseFilterRepository baseFilterRepository;
+  final BaseFavoriteRepository baseFavoriteRepository;
   static FilterCubit get(BuildContext context) {
     return BlocProvider.of(context);
   }
+
+  Map<String, bool> filterFavValues = {};
+  int filterPageNumber = 1;
 
 //get subcategory details
   SubCategoryDetailsModel? subCategoryDetailsModel;
@@ -113,6 +121,10 @@ class FilterCubit extends Cubit<FilterState> {
       emit(GetFilteredListError(l.message));
     }, (r) {
       filteredList = r;
+      for (var element in filteredList) {
+        filterFavValues
+            .addAll({element.productId.toString(): element.favorite});
+      }
       emit(GetFilteredListSuccess());
     });
   }
@@ -167,5 +179,28 @@ class FilterCubit extends Cubit<FilterState> {
   subCategoryVisibilty() {
     isSubCategoryVisible = true;
     emit(SubCategoryAndBrandVisibile());
+  }
+
+  addOrRemoveFromFavoriteBrandDetails(
+      int productId, String token, BuildContext context) async {
+    filterFavValues[productId.toString()] =
+        !filterFavValues[productId.toString()]!;
+    emit(AddOrRemoveFavFilterLoading());
+    Either<Failure, List<ProductsDataModel>> result =
+        await baseFavoriteRepository.addOrRemoveFromFavorite(productId, token);
+    result.fold((l) {
+      filterFavValues[productId.toString()] =
+          !filterFavValues[productId.toString()]!;
+      emit(AddOrRemoveFavFilterError(l.message));
+    }, (r) {
+      sl<FavoriteCubit>().favList = r;
+      for (var element in sl<FavoriteCubit>().favList) {
+        sl<FavoriteCubit>()
+            .favValues
+            .addAll({element.productId.toString(): element.favorite});
+      }
+      print(sl<FavoriteCubit>().favValues);
+      emit(AddOrRemoveFavFilterSuccess());
+    });
   }
 }

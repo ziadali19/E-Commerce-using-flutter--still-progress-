@@ -23,11 +23,12 @@ class BrandDetailsCubit extends Cubit<BrandDetailsState> {
     return BlocProvider.of(context);
   }
 
+  Map<String, bool> brandFavValues = {};
   int brandPageNumber = 1;
   //get brand details
   Brands? brandDetailsModel;
   String? brandErrorMsg;
-  Map<String, bool> brandFavValues = {};
+
   brandDetails(int id, int pageNumber) async {
     pageNumber = 1;
     brandDetailsModel = null;
