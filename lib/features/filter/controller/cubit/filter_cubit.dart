@@ -181,7 +181,7 @@ class FilterCubit extends Cubit<FilterState> {
     emit(SubCategoryAndBrandVisibile());
   }
 
-  addOrRemoveFromFavoriteBrandDetails(
+  addOrRemoveFromFavFilter(
       int productId, String token, BuildContext context) async {
     filterFavValues[productId.toString()] =
         !filterFavValues[productId.toString()]!;

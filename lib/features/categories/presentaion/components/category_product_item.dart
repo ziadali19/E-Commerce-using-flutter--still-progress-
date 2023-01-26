@@ -1,8 +1,10 @@
 import 'package:e_commerce/features/categories/controller/cubit/brand_details_cubit.dart';
 import 'package:e_commerce/features/categories/controller/cubit/sub_categories_details_cubit.dart';
 import 'package:e_commerce/features/favorite/controller/cubit/favorite_cubit.dart';
+import 'package:e_commerce/features/filter/controller/cubit/filter_cubit.dart';
 import 'package:e_commerce/features/product/controller/cubit/products_cubit.dart';
 import 'package:e_commerce/features/product/presentaion/screens/product_details_screen.dart';
+import 'package:e_commerce/features/search/controller/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,6 +21,8 @@ GridView categoryProductItem(
     CategoryDetailsCubit? categoryDetailsCubit,
     SubCategoriesDetailsCubit? subCategoriesDetailsCubit,
     BrandDetailsCubit? brandDetailsCubit,
+    FilterCubit? filterCubit,
+    SearchCubit? searchCubit,
     required int itemCount,
     required List lst,
     required BuildContext context,
@@ -110,7 +114,8 @@ GridView categoryProductItem(
                         child: categoryDetailsCubit != null &&
                                 subCategoriesDetailsCubit == null &&
                                 brandDetailsCubit == null &&
-                                favoriteCubit == null
+                                favoriteCubit == null &&
+                                filterCubit == null
                             ? categoryDetailsCubit.favValues[
                                         lst[index].productId.toString()] ==
                                     false
@@ -127,9 +132,9 @@ GridView categoryProductItem(
                             : categoryDetailsCubit == null &&
                                     subCategoriesDetailsCubit != null &&
                                     brandDetailsCubit == null &&
-                                    favoriteCubit == null
-                                ? subCategoriesDetailsCubit
-                                                .subCategoryFavValues[
+                                    favoriteCubit == null &&
+                                    filterCubit == null
+                                ? subCategoriesDetailsCubit.subCategoryFavValues[
                                             lst[index].productId.toString()] ==
                                         false
                                     ? SvgPicture.asset(
@@ -145,11 +150,11 @@ GridView categoryProductItem(
                                 : categoryDetailsCubit == null &&
                                         subCategoriesDetailsCubit == null &&
                                         brandDetailsCubit != null &&
-                                        favoriteCubit == null
-                                    ? brandDetailsCubit.brandFavValues[
-                                                lst[index]
-                                                    .productId
-                                                    .toString()] ==
+                                        favoriteCubit == null &&
+                                        filterCubit == null
+                                    ? brandDetailsCubit.brandFavValues[lst[index]
+                                                .productId
+                                                .toString()] ==
                                             false
                                         ? SvgPicture.asset(
                                             'assets/images/favorite.svg',
@@ -164,7 +169,8 @@ GridView categoryProductItem(
                                     : categoryDetailsCubit == null &&
                                             subCategoriesDetailsCubit == null &&
                                             brandDetailsCubit == null &&
-                                            favoriteCubit != null
+                                            favoriteCubit != null &&
+                                            filterCubit == null
                                         ? favoriteCubit.favValues[lst[index]
                                                     .productId
                                                     .toString()] ==
@@ -179,37 +185,65 @@ GridView categoryProductItem(
                                                 color: const Color.fromARGB(
                                                     255, 218, 19, 5),
                                               )
-                                        : SvgPicture.asset(
-                                            'assets/images/favorite.svg',
-                                            width: 20.w,
-                                          ),
+                                        : categoryDetailsCubit == null &&
+                                                subCategoriesDetailsCubit ==
+                                                    null &&
+                                                brandDetailsCubit == null &&
+                                                favoriteCubit == null &&
+                                                filterCubit != null
+                                            ? filterCubit.filterFavValues[lst[index].productId.toString()] == false
+                                                ? SvgPicture.asset(
+                                                    'assets/images/favorite.svg',
+                                                    width: 20.w,
+                                                  )
+                                                : SvgPicture.asset(
+                                                    'assets/images/favorite1.svg',
+                                                    width: 20.w,
+                                                    color: const Color.fromARGB(
+                                                        255, 218, 19, 5),
+                                                  )
+                                            : SvgPicture.asset(
+                                                'assets/images/favorite.svg',
+                                                width: 20.w,
+                                              ),
                         onTap: () {
                           if (categoryDetailsCubit != null &&
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit == null &&
-                              favoriteCubit == null) {
+                              favoriteCubit == null &&
+                              filterCubit == null) {
                             categoryDetailsCubit
                                 .addOrRemoveFromFavoriteCategoryDetails(
                                     lst[index].productId, token!, context);
                           } else if (categoryDetailsCubit == null &&
                               subCategoriesDetailsCubit != null &&
                               brandDetailsCubit == null &&
-                              favoriteCubit == null) {
+                              favoriteCubit == null &&
+                              filterCubit == null) {
                             subCategoriesDetailsCubit
                                 .addOrRemoveFromFavoriteSubCategoryDetails(
                                     lst[index].productId, token!, context);
                           } else if (categoryDetailsCubit == null &&
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit != null &&
-                              favoriteCubit == null) {
+                              favoriteCubit == null &&
+                              filterCubit == null) {
                             brandDetailsCubit
                                 .addOrRemoveFromFavoriteBrandDetails(
                                     lst[index].productId, token!, context);
                           } else if (categoryDetailsCubit == null &&
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit == null &&
-                              favoriteCubit != null) {
+                              favoriteCubit != null &&
+                              filterCubit == null) {
                             favoriteCubit.addOrRemoveFromFavorite(
+                                lst[index].productId, token!, context);
+                          } else if (categoryDetailsCubit == null &&
+                              subCategoriesDetailsCubit == null &&
+                              brandDetailsCubit == null &&
+                              favoriteCubit == null &&
+                              filterCubit != null) {
+                            filterCubit.addOrRemoveFromFavFilter(
                                 lst[index].productId, token!, context);
                           } else {
                             print('dirty');

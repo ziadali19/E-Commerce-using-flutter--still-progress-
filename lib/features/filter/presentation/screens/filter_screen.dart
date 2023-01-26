@@ -356,6 +356,7 @@ class FilterScreen extends StatelessWidget {
                                     itemCount: cubit.filteredList.length,
                                     lst: cubit.filteredList,
                                     context: context,
+                                    filterCubit: cubit,
                                     txt: 'Products')
                                 : state is GetFilteredListSuccess &&
                                         cubit.filteredList.isEmpty
@@ -365,7 +366,13 @@ class FilterScreen extends StatelessWidget {
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ))
-                                    : const SizedBox()
+                                    : categoryProductItem(
+                                        screenHeight: screenHeight,
+                                        itemCount: cubit.filteredList.length,
+                                        lst: cubit.filteredList,
+                                        context: context,
+                                        filterCubit: cubit,
+                                        txt: 'Products')
                       ],
                     ))
                 : const Center(
