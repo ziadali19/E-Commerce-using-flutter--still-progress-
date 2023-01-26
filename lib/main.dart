@@ -25,6 +25,8 @@ import 'features/forget password/controller/cubit/forget_cubit.dart';
 import 'features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'features/product/controller/cubit/products_cubit.dart';
 import 'features/search/controller/cubit/search_cubit.dart';
+import 'features/settings/controller/cubit/address_cubit.dart';
+import 'features/settings/controller/cubit/my_account_cubit.dart';
 
 bool? onBoarding;
 String? token;
@@ -77,7 +79,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<ForgetCubit>()),
         BlocProvider(create: (context) => sl<FilterCubit>()..getCategories()),
         BlocProvider(create: (context) => sl<SubCategoriesDetailsCubit>()),
-        BlocProvider(create: (context) => sl<BrandDetailsCubit>())
+        BlocProvider(create: (context) => sl<BrandDetailsCubit>()),
+        BlocProvider(create: (context) => sl<AddressCubit>()),
+        BlocProvider(create: (context) => sl<MyAccountCubit>())
       ],
       child: ScreenUtilInit(
         designSize: const Size(411.42857142857144, 843.4285714285714),
@@ -97,12 +101,5 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-class A {
-  int number = 0;
-  A(x) {
-    number = x;
   }
 }

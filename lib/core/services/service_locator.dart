@@ -33,6 +33,10 @@ import '../../features/register/controller/cubit/register_cubit.dart';
 import '../../features/search/controller/cubit/search_cubit.dart';
 import '../../features/search/data/remote_data_source.dart/search_remote_data_source.dart';
 import '../../features/search/data/repository/search_repository.dart';
+import '../../features/settings/controller/cubit/address_cubit.dart';
+import '../../features/settings/controller/cubit/my_account_cubit.dart';
+import '../../features/settings/data/remote_data_source/settings_remote_data_source.dart';
+import '../../features/settings/data/repository/settings_repository.dart';
 
 final sl = GetIt.instance;
 
@@ -98,5 +102,13 @@ class ServicesLocator {
 
     sl.registerFactory(() => SubCategoriesDetailsCubit(sl(), sl()));
     sl.registerFactory(() => BrandDetailsCubit(sl(), sl()));
+
+    sl.registerFactory(() => AddressCubit(sl()));
+    sl.registerLazySingleton<BaseSettingsRemoteDataSource>(
+        () => SettingsRemoteDataSource());
+    sl.registerLazySingleton<BaseSettingsRepository>(
+        () => SettingsRepository(sl()));
+
+    sl.registerFactory(() => MyAccountCubit());
   }
 }

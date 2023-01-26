@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:e_commerce/features/cart/presentaion/screens/cart_screen.dart';
 import 'package:e_commerce/features/categories/presentaion/screens/categories_screen.dart';
 
-import 'package:e_commerce/features/categories/presentaion/screens/my_account_screen.dart';
+import 'package:e_commerce/features/settings/presentation/screens/my_account_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -6,7 +6,7 @@ class AppConstants {
   static String? token;
   static GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   static GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
-  static String baseUrl = 'https://jumia-samir-hussein.vercel.app/apis/';
+  static String baseUrl = 'http://jumia-clone.onlinewebshop.net/apis/';
   static String userRegisterEndPoint = 'customer/register';
   static String userLoginEndPoint = 'customer/login';
   static String getActiveUserData = 'active-user';
