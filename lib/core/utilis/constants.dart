@@ -14,6 +14,12 @@ class AppConstants {
   static String getCategories = 'category';
   static String forgetPassword = 'customer/forgot-password';
   static String resetPassword = 'customer/reset-password';
+  static String paymobApiKey =
+      "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SndjbTltYVd4bFgzQnJJam8yTnpnd01UQXNJbTVoYldVaU9pSXhOamMwTVRreE9EYzVMalV3TnpjeU1pSXNJbU5zWVhOeklqb2lUV1Z5WTJoaGJuUWlmUS5LaTdyMWpBZUtxbXU0UGl2d25aTEhHYlRIRWlZU0tLcWxmNjdLZkRaVk9uQTBLWkFQdzNUbVZtbWRSRl9QM0dVZ0Qtc2d1Y1RTTkRlb3RKazRPQ29Odw==";
+  static String paymobFirstToken = '';
+  static String paymobOrderId = '';
+  static String paymobFinalToken = '';
+  static num paymobIntegratioIdCard = 3317504;
   static const primaryColor = Color(0xffF67952);
   static const backgroundColor = Color(0xffFBFBFD);
   static const blackColor = Color(0xff000000);

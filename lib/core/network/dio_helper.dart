@@ -17,3 +17,20 @@ initDio() {
     responseHeader: false,
   ));
 }
+
+late Dio dio1;
+initDio1() {
+  dio1 = Dio(BaseOptions(
+      baseUrl: 'https://accept.paymob.com/api/',
+      receiveDataWhenStatusError: true));
+  dio1
+    ..options.connectTimeout = 20 * 1000
+    ..options.receiveTimeout = 20 * 1000;
+  dio1.interceptors.add(LogInterceptor(
+    responseBody: true,
+    requestBody: true,
+    request: true,
+    requestHeader: false,
+    responseHeader: false,
+  ));
+}

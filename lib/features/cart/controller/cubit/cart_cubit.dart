@@ -1,9 +1,12 @@
-import 'package:bloc/bloc.dart';
 import 'package:e_commerce/features/cart/data/models/cart_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/cart/data/repository/cart_repository.dart';
-import 'package:equatable/equatable.dart';
+import 'package:e_commerce/features/payments/controller/cubit/payments_cubit.dart';
+
+import 'package:e_commerce/features/settings/data/model/address_model.dart';
+import 'package:e_commerce/features/settings/data/repository/settings_repository.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +14,9 @@ part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   final BaseCartRepository baseCartRepository;
-  CartCubit(this.baseCartRepository) : super(CartInitial());
+  final BaseSettingsRepository baseSettingsRepository;
+  CartCubit(this.baseCartRepository, this.baseSettingsRepository)
+      : super(CartInitial());
 
   static CartCubit get(BuildContext context) {
     return BlocProvider.of(context);
@@ -61,5 +66,19 @@ class CartCubit extends Cubit<CartState> {
     /*if (result.isRight()) {
       getUserCart(token);
     }*/
+  }
+
+  AddressModel? addressModel;
+  getAddress(context) async {
+    emit(GetAddressCartLoading());
+    Either<Failure, AddressModel> result =
+        await baseSettingsRepository.getAddress();
+    result.fold((l) {
+      emit(GetAddressCartError(l.message));
+    }, (r) {
+      addressModel = r;
+      emit(GetAddressCartSuccess());
+      PaymentsCubit.get(context).updateAddress();
+    });
   }
 }

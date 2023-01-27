@@ -28,6 +28,9 @@ import '../../features/home/data/repository/home_repository.dart';
 import '../../features/login/controller/cubit/login_cubit.dart';
 import '../../features/login/data/remote_data_source.dart/login_remote_data_source.dart';
 import '../../features/login/data/repository/login_repository.dart';
+import '../../features/payments/controller/cubit/payments_cubit.dart';
+import '../../features/payments/data/remote_data_source/payments_remote_data_source.dart';
+import '../../features/payments/data/repository/payments_repository.dart';
 import '../../features/product/data/remote_data_source/product_remote_data_source.dart';
 import '../../features/register/controller/cubit/register_cubit.dart';
 import '../../features/search/controller/cubit/search_cubit.dart';
@@ -71,7 +74,7 @@ class ServicesLocator {
     sl.registerLazySingleton<BaseProductRepository>(
         () => ProductRepository(sl()));
 
-    sl.registerFactory(() => CartCubit(sl()));
+    sl.registerFactory(() => CartCubit(sl(), sl()));
     sl.registerLazySingleton<BaseCartRemoteDataSource>(
         () => CartRemoteDataSource());
     sl.registerLazySingleton<BaseCartRepository>(() => CartRepository(sl()));
@@ -110,5 +113,11 @@ class ServicesLocator {
         () => SettingsRepository(sl()));
 
     sl.registerFactory(() => MyAccountCubit());
+
+    sl.registerFactory(() => PaymentsCubit(sl()));
+    sl.registerLazySingleton<BasePaymentsRemoteDataSource>(
+        () => PaymentsRemoteDataSource());
+    sl.registerLazySingleton<BasePaymentsRepository>(
+        () => PaymentsRepository(sl()));
   }
 }

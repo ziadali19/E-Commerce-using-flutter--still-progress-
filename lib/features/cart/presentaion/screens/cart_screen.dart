@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentaion/components/cart_shimmer_effect.dart';
+import 'package:e_commerce/features/payments/presentation/screens/checkout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,15 +23,18 @@ class CartScreen extends StatelessWidget {
     return BlocConsumer<CartCubit, CartState>(listener: (context, state) {
       if (state is GetUserCartError) {
         AppConstants().showSnackBar(state.error, context, Colors.red);
-        CartCubit.get(context).getUserCart(token);
+        //CartCubit.get(context).getUserCart(token);
       }
       if (state is UpdateItemAmountError) {
         AppConstants().showSnackBar(state.error, context, Colors.red);
-        CartCubit.get(context).getUserCart(token);
+        // CartCubit.get(context).getUserCart(token);
       }
       if (state is DeleteItemFromCartError) {
         AppConstants().showSnackBar(state.error, context, Colors.red);
-        CartCubit.get(context).getUserCart(token);
+        //  CartCubit.get(context).getUserCart(token);
+      }
+      if (state is GetAddressCartError) {
+        AppConstants().showSnackBar(state.error, context, Colors.red);
       }
     }, builder: (context, state) {
       CartCubit cubit = CartCubit.get(context);
@@ -59,7 +63,6 @@ class CartScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const Spacer(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -137,10 +140,23 @@ class CartScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomElevatedButton(
-                              onPressed: () {},
-                              text: 'Checkout',
-                            ),
+                            state is GetAddressCartLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : CustomElevatedButton(
+                                    onPressed: () async {
+                                      await cubit.getAddress(context);
+                                      if (cubit.addressModel != null) {
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CheckoutScreen(),
+                                        ));
+                                      }
+                                    },
+                                    text: 'Checkout',
+                                  ),
                           ],
                         ),
                       ],

@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
+import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/categories/presentaion/components/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -124,13 +125,14 @@ class AddAddressScreen extends StatelessWidget {
                               )
                             : CustomElevatedButton(
                                 text: 'Add',
-                                onPressed: () {
+                                onPressed: () async {
                                   if (formKey.currentState!.validate()) {
-                                    cubit.addAddress(
+                                    await cubit.addAddress(
                                         countryController.text,
                                         stateController.text,
                                         cityController.text,
                                         addressDetailsController.text);
+                                    CartCubit.get(context).getAddress(context);
                                   }
                                 })
                       ],

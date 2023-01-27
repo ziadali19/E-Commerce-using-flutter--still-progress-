@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../../../../core/network/dio_helper.dart';
 import '../../../../core/network/network_exception.dart';
+import '../../../../main.dart';
 import '../model/address_model.dart';
 
 abstract class BaseSettingsRemoteDataSource {
@@ -15,6 +16,7 @@ class SettingsRemoteDataSource extends BaseSettingsRemoteDataSource {
   @override
   Future<AddressModel> addAddress(
       String? country, String? state, String? city, String? address) async {
+    dio.options.headers = {'Authorization': 'Bearer $token'};
     AddressModel addressModel = AddressModel(
         country: country, state: state, city: city, addressDetails: address);
     try {
@@ -28,6 +30,7 @@ class SettingsRemoteDataSource extends BaseSettingsRemoteDataSource {
 
   @override
   Future<AddressModel> getAddress() async {
+    dio.options.headers = {'Authorization': 'Bearer $token'};
     try {
       Response response = await dio.get('address');
       return AddressModel.fromJson(response.data['data']);

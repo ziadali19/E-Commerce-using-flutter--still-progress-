@@ -23,6 +23,7 @@ import 'features/favorite/controller/cubit/favorite_cubit.dart';
 import 'features/filter/controller/cubit/filter_cubit.dart';
 import 'features/forget password/controller/cubit/forget_cubit.dart';
 import 'features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'features/payments/controller/cubit/payments_cubit.dart';
 import 'features/product/controller/cubit/products_cubit.dart';
 import 'features/search/controller/cubit/search_cubit.dart';
 import 'features/settings/controller/cubit/address_cubit.dart';
@@ -34,6 +35,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ServicesLocator.init();
   initDio();
+  initDio1();
   Bloc.observer = MyBlocObserver();
   await CasheHelper.init();
   onBoarding = CasheHelper.getData('onBoarding') as bool?;
@@ -81,7 +83,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<SubCategoriesDetailsCubit>()),
         BlocProvider(create: (context) => sl<BrandDetailsCubit>()),
         BlocProvider(create: (context) => sl<AddressCubit>()),
-        BlocProvider(create: (context) => sl<MyAccountCubit>())
+        BlocProvider(create: (context) => sl<MyAccountCubit>()),
+        BlocProvider(create: (context) => sl<PaymentsCubit>())
       ],
       child: ScreenUtilInit(
         designSize: const Size(411.42857142857144, 843.4285714285714),

@@ -37,3 +37,13 @@ class DeleteItemFromCartError extends CartState {
 
   DeleteItemFromCartError(this.error);
 }
+
+class GetAddressCartLoading extends CartState {}
+
+class GetAddressCartSuccess extends CartState {}
+
+class GetAddressCartError extends CartState {
+  final String? error;
+
+  GetAddressCartError(this.error);
+}
