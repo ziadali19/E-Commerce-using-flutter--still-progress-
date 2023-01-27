@@ -1,7 +1,9 @@
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
+import 'package:e_commerce/features/settings/controller/cubit/orders_cubit.dart';
 import 'package:e_commerce/features/settings/presentation/screens/address_screen.dart';
+import 'package:e_commerce/features/settings/presentation/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +45,12 @@ class MyAccountScreen extends StatelessWidget {
                 height: 15.h,
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  OrdersCubit.get(context).getUserOrders();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const OrdersScreen(),
+                  ));
+                },
                 tileColor: Colors.grey[200],
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.r)),

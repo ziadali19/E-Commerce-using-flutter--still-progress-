@@ -2,11 +2,13 @@ import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/home/presentation/layouts/home_layout_screen.dart';
+import 'package:e_commerce/features/settings/controller/cubit/orders_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../main.dart';
+import '../../../settings/presentation/screens/orders_screen.dart';
 
 class CheckoutCashSuccessScreen extends StatelessWidget {
   const CheckoutCashSuccessScreen({super.key});
@@ -55,7 +57,13 @@ class CheckoutCashSuccessScreen extends StatelessWidget {
                 height: 30.h,
               ),
               CustomElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  OrdersCubit.get(context).getUserOrders();
+                  CartCubit.get(context).getUserCart(token!);
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const OrdersScreen(),
+                  ));
+                },
                 text: 'Track Your Order',
               ),
               SizedBox(
@@ -64,6 +72,7 @@ class CheckoutCashSuccessScreen extends StatelessWidget {
               TextButton(
                   onPressed: () {
                     CartCubit.get(context).getUserCart(token!);
+
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const HomeLayoutScreen(),
                     ));

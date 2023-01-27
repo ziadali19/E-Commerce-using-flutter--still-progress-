@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce/features/settings/data/model/orders_details_model.dart';
 
 import '../../../../core/network/dio_helper.dart';
 import '../../../../core/network/network_exception.dart';
@@ -10,6 +11,8 @@ abstract class BaseSettingsRemoteDataSource {
       String? country, String? state, String? city, String? address);
 
   Future<AddressModel> getAddress();
+
+  Future<List<OrderDetailsModel>> getUserOrders();
 }
 
 class SettingsRemoteDataSource extends BaseSettingsRemoteDataSource {
@@ -34,6 +37,21 @@ class SettingsRemoteDataSource extends BaseSettingsRemoteDataSource {
     try {
       Response response = await dio.get('address');
       return AddressModel.fromJson(response.data['data']);
+    } on DioError catch (e) {
+      throw NetworkException(message: 'Network error');
+    }
+  }
+
+  @override
+  Future<List<OrderDetailsModel>> getUserOrders() async {
+    dio.options.headers = {'Authorization': 'Bearer $token'};
+    List<OrderDetailsModel> ordersList = [];
+    try {
+      Response response = await dio.get('order');
+      (response.data['data'] as List).forEach((element) {
+        ordersList.add(OrderDetailsModel.fromJson(element));
+      });
+      return ordersList;
     } on DioError catch (e) {
       throw NetworkException(message: 'Network error');
     }

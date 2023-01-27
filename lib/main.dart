@@ -28,6 +28,7 @@ import 'features/product/controller/cubit/products_cubit.dart';
 import 'features/search/controller/cubit/search_cubit.dart';
 import 'features/settings/controller/cubit/address_cubit.dart';
 import 'features/settings/controller/cubit/my_account_cubit.dart';
+import 'features/settings/controller/cubit/orders_cubit.dart';
 
 bool? onBoarding;
 String? token;
@@ -84,7 +85,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<BrandDetailsCubit>()),
         BlocProvider(create: (context) => sl<AddressCubit>()),
         BlocProvider(create: (context) => sl<MyAccountCubit>()),
-        BlocProvider(create: (context) => sl<PaymentsCubit>())
+        BlocProvider(create: (context) => sl<PaymentsCubit>()),
+        BlocProvider(create: (context) => sl<OrdersCubit>())
       ],
       child: ScreenUtilInit(
         designSize: const Size(411.42857142857144, 843.4285714285714),

@@ -38,6 +38,7 @@ import '../../features/search/data/remote_data_source.dart/search_remote_data_so
 import '../../features/search/data/repository/search_repository.dart';
 import '../../features/settings/controller/cubit/address_cubit.dart';
 import '../../features/settings/controller/cubit/my_account_cubit.dart';
+import '../../features/settings/controller/cubit/orders_cubit.dart';
 import '../../features/settings/data/remote_data_source/settings_remote_data_source.dart';
 import '../../features/settings/data/repository/settings_repository.dart';
 
@@ -119,5 +120,7 @@ class ServicesLocator {
         () => PaymentsRemoteDataSource());
     sl.registerLazySingleton<BasePaymentsRepository>(
         () => PaymentsRepository(sl()));
+
+    sl.registerFactory(() => OrdersCubit(sl()));
   }
 }
