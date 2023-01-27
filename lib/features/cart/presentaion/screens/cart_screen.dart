@@ -171,9 +171,11 @@ class CartScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 20.sp),
                     ),
                   )
-                : Text(
-                    'Network error!!!',
-                    style: TextStyle(fontSize: 20.sp),
+                : Center(
+                    child: Text(
+                      'Network error!!!',
+                      style: TextStyle(fontSize: 20.sp),
+                    ),
                   );
       }
     });

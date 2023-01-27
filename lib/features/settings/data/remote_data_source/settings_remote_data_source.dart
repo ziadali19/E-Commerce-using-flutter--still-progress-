@@ -3,6 +3,7 @@ import 'package:e_commerce/features/settings/data/model/orders_details_model.dar
 
 import '../../../../core/network/dio_helper.dart';
 import '../../../../core/network/network_exception.dart';
+import '../../../../core/utilis/constants.dart';
 import '../../../../main.dart';
 import '../model/address_model.dart';
 
@@ -13,6 +14,8 @@ abstract class BaseSettingsRemoteDataSource {
   Future<AddressModel> getAddress();
 
   Future<List<OrderDetailsModel>> getUserOrders();
+
+  Future<String> userLogOut();
 }
 
 class SettingsRemoteDataSource extends BaseSettingsRemoteDataSource {
@@ -54,6 +57,21 @@ class SettingsRemoteDataSource extends BaseSettingsRemoteDataSource {
       return ordersList;
     } on DioError catch (e) {
       throw NetworkException(message: 'Network error');
+    }
+  }
+
+  @override
+  Future<String> userLogOut() async {
+    dio.options.headers = {'Authorization': 'Bearer $token'};
+    try {
+      Response response = await dio.get('customer/logout');
+      return response.data['message'];
+    } on DioError catch (e) {
+      if (e.response!.statusCode == 404) {
+        throw NetworkException(message: 'Not found');
+      } else {
+        throw NetworkException(message: 'Network error');
+      }
     }
   }
 }

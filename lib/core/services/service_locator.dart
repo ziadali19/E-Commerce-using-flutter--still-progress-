@@ -113,7 +113,7 @@ class ServicesLocator {
     sl.registerLazySingleton<BaseSettingsRepository>(
         () => SettingsRepository(sl()));
 
-    sl.registerFactory(() => MyAccountCubit());
+    sl.registerFactory(() => MyAccountCubit(sl()));
 
     sl.registerFactory(() => PaymentsCubit(sl()));
     sl.registerLazySingleton<BasePaymentsRemoteDataSource>(

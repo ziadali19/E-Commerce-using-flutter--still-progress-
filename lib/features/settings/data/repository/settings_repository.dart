@@ -12,6 +12,7 @@ abstract class BaseSettingsRepository {
 
   Future<Either<Failure, AddressModel>> getAddress();
   Future<Either<Failure, List<OrderDetailsModel>>> getUserOrders();
+  Future<Either<Failure, String>> userLogOut();
 }
 
 class SettingsRepository extends BaseSettingsRepository {
@@ -45,6 +46,16 @@ class SettingsRepository extends BaseSettingsRepository {
     try {
       List<OrderDetailsModel> result =
           await baseSettingsRemoteDataSource.getUserOrders();
+      return right(result);
+    } on NetworkException catch (e) {
+      return left(NetworkFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> userLogOut() async {
+    try {
+      String result = await baseSettingsRemoteDataSource.userLogOut();
       return right(result);
     } on NetworkException catch (e) {
       return left(NetworkFailure(e.message));

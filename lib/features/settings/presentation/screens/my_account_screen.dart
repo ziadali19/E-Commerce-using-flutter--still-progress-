@@ -1,6 +1,8 @@
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
+import 'package:e_commerce/core/utilis/cashe_helper.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
+import 'package:e_commerce/features/login/presentaions/screens/login_screen.dart';
 import 'package:e_commerce/features/settings/controller/cubit/orders_cubit.dart';
 import 'package:e_commerce/features/settings/presentation/screens/address_screen.dart';
 import 'package:e_commerce/features/settings/presentation/screens/orders_screen.dart';
@@ -19,9 +21,20 @@ class MyAccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<MyAccountCubit, MyAccountState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is UserLogOutError) {
+          AppConstants().showSnackBar(state.errorMsg, context, Colors.red);
+        }
+        if (state is UserLogOutSuccess) {
+          AppConstants().showSnackBar(
+              'You are successfully logged out', context, Colors.green);
+          CasheHelper.removeData('token');
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const LoginScreen(),
+          ));
+        }
       },
       builder: (context, state) {
+        MyAccountCubit cubit = MyAccountCubit.get(context);
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: Column(
@@ -95,10 +108,14 @@ class MyAccountScreen extends StatelessWidget {
                 height: 30.h,
               ),
               Center(
-                child: CustomElevatedButton(
-                  onPressed: () {},
-                  text: 'Sign Out',
-                ),
+                child: state is UserLogOutLoading
+                    ? const CircularProgressIndicator()
+                    : CustomElevatedButton(
+                        onPressed: () {
+                          cubit.userLogOut();
+                        },
+                        text: 'Sign Out',
+                      ),
               )
             ],
           ),

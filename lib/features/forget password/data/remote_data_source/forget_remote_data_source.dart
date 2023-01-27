@@ -13,7 +13,7 @@ class ForgetRemoteDataSource extends BaseForgetRemoteDataSource {
   Future<String> forgetPassword(String email) async {
     try {
       Response res =
-          await dio.post(AppConstants.forgetPassword, data: {'email:$email'});
+          await dio.post(AppConstants.forgetPassword, data: {'email': email});
       return res.data['message'];
     } on DioError catch (e) {
       if (e.response?.statusCode == 422) {

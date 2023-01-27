@@ -8,6 +8,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utilis/constants.dart';
 import '../../../../main.dart';
 
 part 'favorite_state.dart';

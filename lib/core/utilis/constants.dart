@@ -80,3 +80,6 @@ class MyBlocObserver extends BlocObserver {
     print('onClose -- ${bloc.runtimeType}');
   }
 }
+
+bool? onBoarding;
+String? token;

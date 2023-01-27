@@ -30,8 +30,6 @@ import 'features/settings/controller/cubit/address_cubit.dart';
 import 'features/settings/controller/cubit/my_account_cubit.dart';
 import 'features/settings/controller/cubit/orders_cubit.dart';
 
-bool? onBoarding;
-String? token;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ServicesLocator.init();
