@@ -115,7 +115,8 @@ GridView categoryProductItem(
                                 subCategoriesDetailsCubit == null &&
                                 brandDetailsCubit == null &&
                                 favoriteCubit == null &&
-                                filterCubit == null
+                                filterCubit == null &&
+                                searchCubit == null
                             ? categoryDetailsCubit.favValues[
                                         lst[index].productId.toString()] ==
                                     false
@@ -133,7 +134,8 @@ GridView categoryProductItem(
                                     subCategoriesDetailsCubit != null &&
                                     brandDetailsCubit == null &&
                                     favoriteCubit == null &&
-                                    filterCubit == null
+                                    filterCubit == null &&
+                                    searchCubit == null
                                 ? subCategoriesDetailsCubit.subCategoryFavValues[
                                             lst[index].productId.toString()] ==
                                         false
@@ -151,10 +153,9 @@ GridView categoryProductItem(
                                         subCategoriesDetailsCubit == null &&
                                         brandDetailsCubit != null &&
                                         favoriteCubit == null &&
-                                        filterCubit == null
-                                    ? brandDetailsCubit.brandFavValues[lst[index]
-                                                .productId
-                                                .toString()] ==
+                                        filterCubit == null &&
+                                        searchCubit == null
+                                    ? brandDetailsCubit.brandFavValues[lst[index].productId.toString()] ==
                                             false
                                         ? SvgPicture.asset(
                                             'assets/images/favorite.svg',
@@ -170,10 +171,9 @@ GridView categoryProductItem(
                                             subCategoriesDetailsCubit == null &&
                                             brandDetailsCubit == null &&
                                             favoriteCubit != null &&
-                                            filterCubit == null
-                                        ? favoriteCubit.favValues[lst[index]
-                                                    .productId
-                                                    .toString()] ==
+                                            filterCubit == null &&
+                                            searchCubit == null
+                                        ? favoriteCubit.favValues[lst[index].productId.toString()] ==
                                                 false
                                             ? SvgPicture.asset(
                                                 'assets/images/favorite.svg',
@@ -190,8 +190,12 @@ GridView categoryProductItem(
                                                     null &&
                                                 brandDetailsCubit == null &&
                                                 favoriteCubit == null &&
-                                                filterCubit != null
-                                            ? filterCubit.filterFavValues[lst[index].productId.toString()] == false
+                                                filterCubit != null &&
+                                                searchCubit == null
+                                            ? filterCubit.filterFavValues[lst[index]
+                                                        .productId
+                                                        .toString()] ==
+                                                    false
                                                 ? SvgPicture.asset(
                                                     'assets/images/favorite.svg',
                                                     width: 20.w,
@@ -202,16 +206,35 @@ GridView categoryProductItem(
                                                     color: const Color.fromARGB(
                                                         255, 218, 19, 5),
                                                   )
-                                            : SvgPicture.asset(
-                                                'assets/images/favorite.svg',
-                                                width: 20.w,
-                                              ),
+                                            : categoryDetailsCubit == null &&
+                                                    subCategoriesDetailsCubit == null &&
+                                                    brandDetailsCubit == null &&
+                                                    favoriteCubit == null &&
+                                                    filterCubit == null &&
+                                                    searchCubit != null
+                                                ? searchCubit.favSearchValues[lst[index].productId.toString()] == false
+                                                    ? SvgPicture.asset(
+                                                        'assets/images/favorite.svg',
+                                                        width: 20.w,
+                                                      )
+                                                    : SvgPicture.asset(
+                                                        'assets/images/favorite1.svg',
+                                                        width: 20.w,
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            255, 218, 19, 5),
+                                                      )
+                                                : SvgPicture.asset(
+                                                    'assets/images/favorite.svg',
+                                                    width: 20.w,
+                                                  ),
                         onTap: () {
                           if (categoryDetailsCubit != null &&
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit == null &&
                               favoriteCubit == null &&
-                              filterCubit == null) {
+                              filterCubit == null &&
+                              searchCubit == null) {
                             categoryDetailsCubit
                                 .addOrRemoveFromFavoriteCategoryDetails(
                                     lst[index].productId, token!, context);
@@ -219,7 +242,8 @@ GridView categoryProductItem(
                               subCategoriesDetailsCubit != null &&
                               brandDetailsCubit == null &&
                               favoriteCubit == null &&
-                              filterCubit == null) {
+                              filterCubit == null &&
+                              searchCubit == null) {
                             subCategoriesDetailsCubit
                                 .addOrRemoveFromFavoriteSubCategoryDetails(
                                     lst[index].productId, token!, context);
@@ -227,7 +251,8 @@ GridView categoryProductItem(
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit != null &&
                               favoriteCubit == null &&
-                              filterCubit == null) {
+                              filterCubit == null &&
+                              searchCubit == null) {
                             brandDetailsCubit
                                 .addOrRemoveFromFavoriteBrandDetails(
                                     lst[index].productId, token!, context);
@@ -235,15 +260,25 @@ GridView categoryProductItem(
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit == null &&
                               favoriteCubit != null &&
-                              filterCubit == null) {
+                              filterCubit == null &&
+                              searchCubit == null) {
                             favoriteCubit.addOrRemoveFromFavorite(
                                 lst[index].productId, token!, context);
                           } else if (categoryDetailsCubit == null &&
                               subCategoriesDetailsCubit == null &&
                               brandDetailsCubit == null &&
                               favoriteCubit == null &&
-                              filterCubit != null) {
+                              filterCubit != null &&
+                              searchCubit == null) {
                             filterCubit.addOrRemoveFromFavFilter(
+                                lst[index].productId, token!, context);
+                          } else if (categoryDetailsCubit == null &&
+                              subCategoriesDetailsCubit == null &&
+                              brandDetailsCubit == null &&
+                              favoriteCubit == null &&
+                              filterCubit == null &&
+                              searchCubit != null) {
+                            searchCubit.addOrRemoveFromFavSearch(
                                 lst[index].productId, token!, context);
                           } else {
                             print('dirty');

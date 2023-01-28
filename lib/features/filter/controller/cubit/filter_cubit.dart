@@ -82,22 +82,23 @@ class FilterCubit extends Cubit<FilterState> {
 
   ////////filter
   List<ProductsDataModel> filteredList = [];
-  filterProducts(
-      {required dynamic categoryId,
-      required String? subCategory,
-      required dynamic subCategoryId,
-      required String? brand,
-      required dynamic brandId,
-      required String? discount,
-      required dynamic discountPercentage,
-      required String? priceFrom,
-      required String? priceTo,
-      required dynamic startPrice,
-      required dynamic endPrice,
-      required String? orderByPrice,
-      required dynamic orderByPriceValue,
-      required String? rating,
-      required dynamic ratingValue}) async {
+  filterProducts({
+    required dynamic categoryId,
+    required String? subCategory,
+    required dynamic subCategoryId,
+    required String? brand,
+    required dynamic brandId,
+    required String? discount,
+    required dynamic discountPercentage,
+    required String? priceFrom,
+    required String? priceTo,
+    required dynamic startPrice,
+    required dynamic endPrice,
+    required String? orderByPrice,
+    required dynamic orderByPriceValue,
+    required String? rating,
+    required dynamic ratingValue,
+  }) async {
     emit(GetFilteredListLoading());
     Either<Failure, List<ProductsDataModel>> result =
         await baseFilterRepository.filterProducts(
@@ -115,7 +116,8 @@ class FilterCubit extends Cubit<FilterState> {
             orderByPrice: orderByPrice,
             orderByPriceValue: orderByPriceValue,
             rating: rating,
-            ratingValue: ratingValue);
+            ratingValue: ratingValue,
+            pageNumber: 1);
 
     result.fold((l) {
       emit(GetFilteredListError(l.message));
@@ -171,7 +173,7 @@ class FilterCubit extends Cubit<FilterState> {
     filteredList = [];
     isSubCategoryVisible = false;
     subCategoryDetailsModel = null;
-
+    filterPageNumber = 1;
     emit(ResetFilters());
   }
 
@@ -201,6 +203,55 @@ class FilterCubit extends Cubit<FilterState> {
       }
       FavoriteCubit.get(context).updateFavList();
       emit(AddOrRemoveFavFilterSuccess());
+    });
+  }
+
+  filterLoadMore({
+    required dynamic categoryId,
+    required String? subCategory,
+    required dynamic subCategoryId,
+    required String? brand,
+    required dynamic brandId,
+    required String? discount,
+    required dynamic discountPercentage,
+    required String? priceFrom,
+    required String? priceTo,
+    required dynamic startPrice,
+    required dynamic endPrice,
+    required String? orderByPrice,
+    required dynamic orderByPriceValue,
+    required String? rating,
+    required dynamic ratingValue,
+  }) async {
+    filterPageNumber += 1;
+    Either<Failure, List<ProductsDataModel>> result =
+        await baseFilterRepository.filterProducts(
+            categoryId: categoryId,
+            subCategory: subCategory,
+            subCategoryId: subCategoryId,
+            brand: brand,
+            brandId: brandId,
+            discount: discount,
+            discountPercentage: discountPercentage,
+            priceFrom: priceFrom,
+            priceTo: priceTo,
+            startPrice: startPrice,
+            endPrice: endPrice,
+            orderByPrice: orderByPrice,
+            orderByPriceValue: orderByPriceValue,
+            rating: rating,
+            ratingValue: ratingValue,
+            pageNumber: filterPageNumber);
+
+    result.fold((l) {
+      emit(GetFilteredListError(l.message));
+    }, (r) {
+      if (r.isNotEmpty) {
+        filteredList.addAll(r);
+        emit(GetFilteredListSuccess());
+      } else {
+        filterPageNumber = 1;
+      }
     });
   }
 }

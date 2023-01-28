@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_commerce/features/favorite/data/repository/favorite_repository.dart';
 import 'package:e_commerce/features/home/data/model/product_details_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -7,11 +8,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../favorite/controller/cubit/favorite_cubit.dart';
+
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   final BaseSearchRepository baseSearchRepository;
-  SearchCubit(this.baseSearchRepository) : super(SearchInitial());
+  final BaseFavoriteRepository baseFavoriteRepository;
+  SearchCubit(this.baseSearchRepository, this.baseFavoriteRepository)
+      : super(SearchInitial());
   TextEditingController searchController = TextEditingController();
   static SearchCubit get(BuildContext context) {
     return BlocProvider.of(context);
@@ -19,6 +24,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   int searchPageNumber = 1;
   List<ProductsDataModel> searchList = [];
+  Map<String, bool> favSearchValues = {};
   searchProducts(dynamic keyWord, int pageNumber) async {
     pageNumber = 1;
     emit(SearchProductsLoading());
@@ -28,6 +34,10 @@ class SearchCubit extends Cubit<SearchState> {
       emit(SearchProductsError(l.message));
     }, (r) {
       searchList = r;
+      searchList.forEach((element) {
+        favSearchValues
+            .addAll({element.productId.toString(): element.favorite});
+      });
       emit(SearchProductsSuccess());
     });
   }
@@ -46,6 +56,29 @@ class SearchCubit extends Cubit<SearchState> {
       } else {
         searchPageNumber = 1;
       }
+    });
+  }
+
+  addOrRemoveFromFavSearch(
+      int productId, String token, BuildContext context) async {
+    favSearchValues[productId.toString()] =
+        !favSearchValues[productId.toString()]!;
+    emit(AddOrRemoveFavSearchLoading());
+    Either<Failure, List<ProductsDataModel>> result =
+        await baseFavoriteRepository.addOrRemoveFromFavorite(productId, token);
+    result.fold((l) {
+      favSearchValues[productId.toString()] =
+          !favSearchValues[productId.toString()]!;
+      emit(AddOrRemoveFavSearchError(l.message));
+    }, (r) {
+      FavoriteCubit.get(context).favList = r;
+      for (var element in FavoriteCubit.get(context).favList) {
+        FavoriteCubit.get(context)
+            .favValues
+            .addAll({element.productId.toString(): element.favorite});
+      }
+      FavoriteCubit.get(context).updateFavList();
+      emit(AddOrRemoveFavSearchSuccess());
     });
   }
 }

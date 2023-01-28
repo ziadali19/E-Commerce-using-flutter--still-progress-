@@ -27,7 +27,8 @@ abstract class BaseFilterRepository {
       required String? orderByPrice,
       required dynamic orderByPriceValue,
       required String? rating,
-      required dynamic ratingValue});
+      required dynamic ratingValue,
+      required int pageNumber});
 }
 
 class FilterRepository extends BaseFilterRepository {
@@ -69,7 +70,8 @@ class FilterRepository extends BaseFilterRepository {
       required String? orderByPrice,
       required dynamic orderByPriceValue,
       required String? rating,
-      required dynamic ratingValue}) async {
+      required dynamic ratingValue,
+      required int pageNumber}) async {
     try {
       List<ProductsDataModel> result =
           await baseFilterRemoteDataSource.filterProducts(
@@ -87,7 +89,8 @@ class FilterRepository extends BaseFilterRepository {
               orderByPrice: orderByPrice,
               orderByPriceValue: orderByPriceValue,
               rating: rating,
-              ratingValue: ratingValue);
+              ratingValue: ratingValue,
+              pageNumber: pageNumber);
 
       return right(result);
     } on NetworkException catch (e) {

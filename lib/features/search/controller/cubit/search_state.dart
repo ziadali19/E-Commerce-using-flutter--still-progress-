@@ -13,3 +13,13 @@ class SearchProductsError extends SearchState {
 
   SearchProductsError(this.errorMsg);
 }
+
+class AddOrRemoveFavSearchLoading extends SearchState {}
+
+class AddOrRemoveFavSearchSuccess extends SearchState {}
+
+class AddOrRemoveFavSearchError extends SearchState {
+  final String? errorMsg;
+
+  AddOrRemoveFavSearchError(this.errorMsg);
+}

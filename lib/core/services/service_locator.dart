@@ -86,7 +86,7 @@ class ServicesLocator {
     sl.registerLazySingleton<BaseFavoriteRepository>(
         () => FavoriteRepository(sl()));
 
-    sl.registerFactory(() => SearchCubit(sl()));
+    sl.registerFactory(() => SearchCubit(sl(), sl()));
     sl.registerLazySingleton<BaseSearchRemoteDataSource>(
         () => SearchRemoteDataSource());
     sl.registerLazySingleton<BaseSearchRepository>(

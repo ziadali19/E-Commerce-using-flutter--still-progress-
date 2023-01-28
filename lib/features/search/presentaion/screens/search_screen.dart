@@ -53,6 +53,7 @@ class SearchScreen extends StatelessWidget {
                             ? categoryProductItem(
                                 context: context,
                                 txt: '',
+                                searchCubit: cubit,
                                 screenHeight: screenHeight,
                                 itemCount: cubit.searchList.length,
                                 lst: cubit.searchList)

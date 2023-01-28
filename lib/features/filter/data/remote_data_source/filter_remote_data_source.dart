@@ -27,7 +27,8 @@ abstract class BaseFilterRemoteDataSource {
       required String? orderByPrice,
       required dynamic orderByPriceValue,
       required String? rating,
-      required dynamic ratingValue});
+      required dynamic ratingValue,
+      required int pageNumber});
 }
 
 class FilterRemoteDataSource extends BaseFilterRemoteDataSource {
@@ -75,7 +76,8 @@ class FilterRemoteDataSource extends BaseFilterRemoteDataSource {
       required String? orderByPrice,
       required dynamic orderByPriceValue,
       required String? rating,
-      required dynamic ratingValue}) async {
+      required dynamic ratingValue,
+      required int pageNumber}) async {
     List<ProductsDataModel> filteredProducts = [];
     try {
       Response response = await dio.get('filter', queryParameters: {
@@ -86,7 +88,8 @@ class FilterRemoteDataSource extends BaseFilterRemoteDataSource {
         priceFrom.toString(): startPrice,
         priceTo.toString(): endPrice,
         orderByPrice.toString(): orderByPriceValue,
-        rating.toString(): ratingValue
+        rating.toString(): ratingValue,
+        'page': pageNumber
       });
       (response.data['data'] as List).forEach((element) {
         filteredProducts.add(ProductsDataModel.fromJson(element));
