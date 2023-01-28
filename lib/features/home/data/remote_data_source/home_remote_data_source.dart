@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/home/data/model/active_user_model.dart';
 import 'package:e_commerce/features/home/data/model/categories_model.dart';
+import 'package:e_commerce/features/home/data/model/home_products_model.dart';
 import 'package:e_commerce/features/home/data/model/product_details_model.dart';
 
 import '../../../../core/network/dio_helper.dart';
@@ -9,7 +10,7 @@ import '../../../../core/network/network_exception.dart';
 
 abstract class HomeBaseRemoteDataSource {
   Future<ActiveUserModel> getActiveUserData(token);
-  Future<List<ProductsDataModel>> getProducts(int pageNumber);
+  Future<HomeProductsModel> getHomeProducts();
   Future<List<CategoriesDataModel>> getCategories();
 }
 
@@ -31,15 +32,11 @@ class HomeRemoteDataSource extends HomeBaseRemoteDataSource {
   }
 
   @override
-  Future<List<ProductsDataModel>> getProducts(int pageNumber) async {
+  Future<HomeProductsModel> getHomeProducts() async {
     try {
-      List<ProductsDataModel> productsDetails = [];
-      Response res = await dio
-          .get(AppConstants.getProducts, queryParameters: {'page': pageNumber});
-      (res.data['data'] as List).forEach((element) {
-        productsDetails.add(ProductsDataModel.fromJson(element));
-      });
-      return productsDetails;
+      Response res = await dio.get('products/home-page');
+
+      return HomeProductsModel.fromJson(res.data);
     } on DioError {
       throw NetworkException(message: 'Network Error !!');
     }

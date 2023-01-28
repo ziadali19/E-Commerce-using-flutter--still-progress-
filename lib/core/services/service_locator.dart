@@ -56,7 +56,7 @@ class ServicesLocator {
     sl.registerLazySingleton<BaseLoginRepository>(() => LoginRepository(sl()));
     sl.registerLazySingleton<BaseLoginRemoteDataSource>(
         () => LoginRemoteDataSource());
-    sl.registerFactory(() => HomeCubit(sl()));
+    sl.registerFactory(() => HomeCubit(sl(), sl()));
     sl.registerLazySingleton<HomeBaseRepository>(() => HomeRepository(sl()));
     sl.registerLazySingleton<HomeBaseRemoteDataSource>(
         () => HomeRemoteDataSource());

@@ -35,3 +35,13 @@ class HomeGetCategoriesError extends HomeState {
 
   const HomeGetCategoriesError(this.error);
 }
+
+class AddOrRemoveFavHomePageLoading extends HomeState {}
+
+class AddOrRemoveFavHomePageSuccess extends HomeState {}
+
+class AddOrRemoveFavHomePageError extends HomeState {
+  final String? errorMsg;
+
+  AddOrRemoveFavHomePageError(this.errorMsg);
+}

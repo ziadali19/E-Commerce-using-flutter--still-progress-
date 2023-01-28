@@ -58,13 +58,13 @@ class BrandDetailsCubit extends Cubit<BrandDetailsState> {
           !brandFavValues[productId.toString()]!;
       emit(AddOrRemoveFavBrandError(l.message));
     }, (r) {
-      sl<FavoriteCubit>().favList = r;
-      for (var element in sl<FavoriteCubit>().favList) {
-        sl<FavoriteCubit>()
+      FavoriteCubit.get(context).favList = r;
+      for (var element in FavoriteCubit.get(context).favList) {
+        FavoriteCubit.get(context)
             .favValues
             .addAll({element.productId.toString(): element.favorite});
       }
-      print(sl<FavoriteCubit>().favValues);
+      FavoriteCubit.get(context).updateFavList();
       emit(AddOrRemoveFavBrandSuccess());
     });
   }

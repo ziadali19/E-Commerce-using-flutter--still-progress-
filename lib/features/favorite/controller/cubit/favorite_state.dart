@@ -31,3 +31,5 @@ class ChangeFavIcon extends FavoriteState {}
 class NoMoreData extends FavoriteState {}
 
 class ShowLoading extends FavoriteState {}
+
+class UpdateFavList extends FavoriteState {}

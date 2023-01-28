@@ -7,7 +7,7 @@ import '../../../../core/utilis/constants.dart';
 import '../../../product/controller/cubit/products_cubit.dart';
 import '../../controller/cubit/home_cubit.dart';
 
-SizedBox productsItem(HomeCubit cubit, double screenHeight) {
+SizedBox productsItem(HomeCubit cubit, double screenHeight, lst, ctx) {
   return SizedBox(
       height: 350.h,
       child: ListView.separated(
@@ -18,12 +18,12 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight) {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => ProductDetailsScreen(
-                    lst: cubit.products,
+                    lst: lst,
                     index: index,
                   ),
                 ));
                 ProductsCubit.get(context).getProductDetails(
-                    cubit.products[index].productId,
+                    lst[index].productId,
                     ProductsCubit.get(context).productPageNumber);
               },
               child: Container(
@@ -42,11 +42,13 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight) {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    cubit.products[index].productImage!))),
+                                image: NetworkImage(lst[index].productImage!))),
+                      ),
+                      SizedBox(
+                        height: 5.h,
                       ),
                       Text(
-                        cubit.products[index].productName!,
+                        lst[index].productName!,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
@@ -57,22 +59,21 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight) {
                       SizedBox(
                         height: screenHeight * 0.02,
                       ),
-                      Text(cubit.products[index].priceAfterDiscount!,
+                      Text(lst[index].priceAfterDiscount!,
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w600,
                               color: Colors.black)),
-                      cubit.products[index].priceAfterDiscount !=
-                              cubit.products[index].price
+                      lst[index].priceAfterDiscount != lst[index].price
                           ? Row(
                               children: [
-                                Text('${cubit.products[index].price!} ',
+                                Text('${lst[index].price!} ',
                                     style: TextStyle(
                                         fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
                                         decoration: TextDecoration.lineThrough,
                                         color: Colors.black)),
-                                Text(' ${cubit.products[index].discount!} OFF',
+                                Text(' ${lst[index].discount!} OFF',
                                     style: TextStyle(
                                         fontSize: 10.sp,
                                         fontWeight: FontWeight.w500,
@@ -90,11 +91,40 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight) {
                           Container(
                             transform: Matrix4.translationValues(0, -1.5, 0),
                             child: GestureDetector(
-                              child: SvgPicture.asset(
-                                'assets/images/favorite.svg',
-                                width: 20.w,
-                              ),
-                              onTap: () {},
+                              child: cubit.favBestOffersValues[lst[index]
+                                              .productId
+                                              .toString()] ==
+                                          false ||
+                                      cubit.favBestSellerValues[lst[index]
+                                              .productId
+                                              .toString()] ==
+                                          false ||
+                                      cubit.favNewArrivalValues[lst[index]
+                                              .productId
+                                              .toString()] ==
+                                          false ||
+                                      cubit.favTopRatedValues[lst[index]
+                                              .productId
+                                              .toString()] ==
+                                          false ||
+                                      cubit.favTrendingValues[lst[index]
+                                              .productId
+                                              .toString()] ==
+                                          false
+                                  ? SvgPicture.asset(
+                                      'assets/images/favorite.svg',
+                                      width: 20.w,
+                                    )
+                                  : SvgPicture.asset(
+                                      'assets/images/favorite1.svg',
+                                      width: 20.w,
+                                      color:
+                                          const Color.fromARGB(255, 218, 19, 5),
+                                    ),
+                              onTap: () {
+                                cubit.addOrRemoveFromFavHomePage(
+                                    lst[index].productId, token!, ctx);
+                              },
                             ),
                           ),
                           const Spacer(),
@@ -102,14 +132,14 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight) {
                             padding: const EdgeInsets.all(3),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: cubit.products[index].rating! >= 4
+                                color: lst[index].rating! >= 4
                                     ? Colors.green
-                                    : (cubit.products[index].rating) >= 3
+                                    : (lst[index].rating) >= 3
                                         ? const Color.fromARGB(255, 74, 114, 76)
                                         : Colors.grey),
                             child: Row(
                               children: [
-                                Text(cubit.products[index].rating!.toString(),
+                                Text(lst[index].rating!.toString(),
                                     style: TextStyle(
                                         fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
@@ -139,5 +169,5 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight) {
               width: 10.w,
             );
           },
-          itemCount: cubit.products.length));
+          itemCount: lst.length));
 }

@@ -3,6 +3,7 @@ import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/categories/controller/cubit/category_details_cubit.dart';
 import 'package:e_commerce/features/favorite/data/repository/favorite_repository.dart';
+import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/data/model/product_details_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
@@ -76,5 +77,9 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         favPageNumber = 1;
       }
     });
+  }
+
+  updateFavList() {
+    emit(UpdateFavList());
   }
 }

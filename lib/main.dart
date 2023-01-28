@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => sl<HomeCubit>()
               ..getActiveUserData(token)
-              ..getProducts(1)
+              ..getHomeProducts()
               ..getCategories()),
         BlocProvider(
           create: (context) => HomeLayoutCubit(),

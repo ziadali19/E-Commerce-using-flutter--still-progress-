@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/categories/controller/cubit/category_details_cubit.dart';
 import 'package:e_commerce/features/favorite/presentation/components/favorite_shimmer_effect.dart';
+import 'package:e_commerce/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

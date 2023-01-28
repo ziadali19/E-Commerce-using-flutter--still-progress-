@@ -6,11 +6,12 @@ import 'package:e_commerce/features/home/data/model/categories_model.dart';
 import 'package:e_commerce/features/home/data/remote_data_source/home_remote_data_source.dart';
 
 import '../model/active_user_model.dart';
+import '../model/home_products_model.dart';
 import '../model/product_details_model.dart';
 
 abstract class HomeBaseRepository {
   Future<Either<Failure, ActiveUserModel>> getActiveUserData(token);
-  Future<Either<Failure, List<ProductsDataModel>>> getProducts(int pageNumber);
+  Future<Either<Failure, HomeProductsModel>> getHomeProducts();
   Future<Either<Failure, List<CategoriesDataModel>>> getCategories();
 }
 
@@ -31,11 +32,9 @@ class HomeRepository extends HomeBaseRepository {
   }
 
   @override
-  Future<Either<Failure, List<ProductsDataModel>>> getProducts(
-      int pageNumber) async {
+  Future<Either<Failure, HomeProductsModel>> getHomeProducts() async {
     try {
-      List<ProductsDataModel> res =
-          await homeBaseRemoteDataSource.getProducts(pageNumber);
+      HomeProductsModel res = await homeBaseRemoteDataSource.getHomeProducts();
       return right(res);
     } on NetworkException catch (e) {
       return left(NetworkFailure(e.message));

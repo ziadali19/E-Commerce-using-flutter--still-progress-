@@ -62,13 +62,13 @@ class CategoryDetailsCubit extends Cubit<CategoryDetailsState> {
       favValues[productId.toString()] = !favValues[productId.toString()]!;
       emit(AddOrRemoveFavCategoryDetailsError(l.message));
     }, (r) {
-      sl<FavoriteCubit>().favList = r;
-      for (var element in sl<FavoriteCubit>().favList) {
-        sl<FavoriteCubit>()
+      FavoriteCubit.get(context).favList = r;
+      for (var element in FavoriteCubit.get(context).favList) {
+        FavoriteCubit.get(context)
             .favValues
             .addAll({element.productId.toString(): element.favorite});
       }
-      print(sl<FavoriteCubit>().favValues);
+      FavoriteCubit.get(context).updateFavList();
       emit(AddOrRemoveFavCategoryDetailsSuccess());
     });
   }
