@@ -35,7 +35,7 @@ class AddressScreen extends StatelessWidget {
                       EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Column(
                     children: [
-                      cubit.addressModel!.addressDetails!.isEmpty
+                      cubit.addressModel!.addressDetails == null
                           ? Center(
                               child: Text(
                               'No Address is Added Yet',
@@ -123,7 +123,7 @@ class AddressScreen extends StatelessWidget {
                               ),
                             ),
                       const Spacer(),
-                      cubit.addressModel!.addressDetails!.isEmpty
+                      cubit.addressModel!.addressDetails == null
                           ? CustomElevatedButton(
                               text: 'Add Your Address',
                               onPressed: () {

@@ -1,8 +1,5 @@
 import 'package:e_commerce/core/utilis/constants.dart';
-import 'package:e_commerce/features/favorite/controller/cubit/favorite_cubit.dart';
-import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
-import 'package:e_commerce/features/login/presentaions/screens/login_screen.dart';
-import 'package:e_commerce/features/search/presentaion/screens/search_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

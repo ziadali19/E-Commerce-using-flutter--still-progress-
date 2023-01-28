@@ -32,16 +32,16 @@ class AddAddressScreen extends StatelessWidget {
             TextEditingController();
 
         AddressCubit cubit = AddressCubit.get(context);
-        cubit.addressModel != null
+        cubit.addressModel != null && cubit.addressModel!.country != null
             ? countryController.text = cubit.addressModel!.country!
             : countryController.text = '';
-        cubit.addressModel != null
+        cubit.addressModel != null && cubit.addressModel!.state != null
             ? stateController.text = cubit.addressModel!.state!
             : stateController.text = '';
-        cubit.addressModel != null
+        cubit.addressModel != null && cubit.addressModel!.city != null
             ? cityController.text = cubit.addressModel!.city!
             : cityController.text = '';
-        cubit.addressModel != null
+        cubit.addressModel != null && cubit.addressModel!.addressDetails != null
             ? addressDetailsController.text =
                 cubit.addressModel!.addressDetails!
             : addressDetailsController.text = '';

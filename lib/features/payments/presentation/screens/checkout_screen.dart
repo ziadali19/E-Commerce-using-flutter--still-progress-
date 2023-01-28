@@ -72,53 +72,72 @@ class CheckoutScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                  CartCubit.get(context).addressModel!.country!,
-                                  overflow: TextOverflow.ellipsis,
+                          CartCubit.get(context).addressModel!.addressDetails ==
+                                  null
+                              ? Text(
+                                  'Add your address',
                                   style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(CartCubit.get(context).addressModel!.state!,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
-                                      fontWeight: FontWeight.w400)),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(CartCubit.get(context).addressModel!.city!,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
-                                      fontWeight: FontWeight.w400)),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(
-                                  CartCubit.get(context)
-                                      .addressModel!
-                                      .addressDetails!,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
-                                      fontWeight: FontWeight.w400)),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(
-                                  HomeCubit.get(context).userModel!.data.phone!,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
-                                      fontWeight: FontWeight.w400))
-                            ],
-                          ),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15.sp),
+                                )
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        CartCubit.get(context)
+                                            .addressModel!
+                                            .country!,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.w500)),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                        CartCubit.get(context)
+                                            .addressModel!
+                                            .state!,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 13.sp,
+                                            fontWeight: FontWeight.w400)),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                        CartCubit.get(context)
+                                            .addressModel!
+                                            .city!,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 13.sp,
+                                            fontWeight: FontWeight.w400)),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                        CartCubit.get(context)
+                                            .addressModel!
+                                            .addressDetails!,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 13.sp,
+                                            fontWeight: FontWeight.w400)),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                        HomeCubit.get(context)
+                                            .userModel!
+                                            .data
+                                            .phone!,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 13.sp,
+                                            fontWeight: FontWeight.w400))
+                                  ],
+                                ),
                           const Spacer(),
                           InkWell(
                             child: SvgPicture.asset('assets/images/edit.svg'),
