@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AppConstants {
   static String? token;
@@ -37,6 +38,21 @@ class AppConstants {
     'A product is the item offered for sale. A product can be a service or an item. It can be physical or in virtual or cyber form',
     'Payment is the transfer of money services in exchange product or Payments typically made terms agreed ',
     'Business or commerce an order is a stated intention either spoken to engage in a commercial transaction specific CatgetCategories '
+  ];
+  static List categoriesIcons = [
+    'assets/images/1.svg',
+    'assets/images/2.svg',
+    'assets/images/3.svg',
+    'assets/images/4.svg',
+    'assets/images/5.svg',
+    'assets/images/6.svg',
+    'assets/images/7.svg',
+    'assets/images/8.svg',
+    'assets/images/9.svg',
+    'assets/images/10.svg',
+    'assets/images/11.svg',
+    'assets/images/12.svg',
+    'assets/images/13.svg',
   ];
   showSnackBar(String? msg, BuildContext context, Color? clr) {
     showToast(

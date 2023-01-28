@@ -90,7 +90,7 @@ SizedBox productsItem(HomeCubit cubit, double screenHeight, lst, ctx) {
                         children: [
                           Container(
                             transform: Matrix4.translationValues(0, -1.5, 0),
-                            child: GestureDetector(
+                            child: InkWell(
                               child: cubit.favBestOffersValues[lst[index]
                                               .productId
                                               .toString()] ==

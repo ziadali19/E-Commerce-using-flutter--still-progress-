@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                             Container(
                               width: screenWidth * 0.8,
                               height: 1,
-                              color: AppConstants.primaryColor,
+                              color: Colors.black,
                             ),
                             SizedBox(
                               height: screenHeight * 0.015,
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppConstants.primaryColor),
+                                  color: Colors.black),
                             ),
                             SizedBox(
                               height: 17.h,
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppConstants.primaryColor),
+                                  color: Colors.black),
                             ),
                             SizedBox(
                               height: 17.h,
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppConstants.primaryColor),
+                                  color: Colors.black),
                             ),
                             SizedBox(
                               height: 17.h,
@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppConstants.primaryColor),
+                                  color: Colors.black),
                             ),
                             SizedBox(
                               height: 17.h,
@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppConstants.primaryColor),
+                                  color: Colors.black),
                             ),
                             SizedBox(
                               height: 17.h,
@@ -133,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppConstants.primaryColor),
+                                  color: Colors.black),
                             ),
                             SizedBox(
                               height: 17.h,
