@@ -43,7 +43,7 @@ class AppConstants {
   static List categoriesIcons = [
     'assets/images/1.svg',
     'assets/images/2.svg',
-    'assets/images/3.svg',
+    'assets/images/perfume.svg',
     'assets/images/4.svg',
     'assets/images/5.svg',
     'assets/images/6.svg',
