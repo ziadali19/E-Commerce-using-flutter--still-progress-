@@ -28,7 +28,7 @@ class AddressScreen extends StatelessWidget {
         AddressCubit cubit = AddressCubit.get(context);
         return Scaffold(
           appBar: customAppBar(context, 'Addresses'),
-          body: cubit.addressModel == null
+          body: state is GetAddressLoading
               ? categoryDetailsShimmerEffect(screenHeight, screenWidth)
               : Padding(
                   padding:

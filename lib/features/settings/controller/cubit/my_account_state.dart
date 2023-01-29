@@ -15,3 +15,13 @@ class UserLogOutError extends MyAccountState {
 
   UserLogOutError(this.errorMsg);
 }
+
+class MyAccountGetActiveUserDataLoading extends MyAccountState {}
+
+class MyAccountGetActiveUserDataSuccess extends MyAccountState {}
+
+class MyAccountGetActiveUserDataError extends MyAccountState {
+  final String? error;
+
+  const MyAccountGetActiveUserDataError(this.error);
+}

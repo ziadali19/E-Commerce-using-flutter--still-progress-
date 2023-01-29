@@ -6,7 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class AppConstants {
   static String? token;
   static GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
-  static GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
+  static GlobalKey<FormState> signInFormKey =
+      GlobalKey<FormState>(debugLabel: 'login');
   static String baseUrl = 'http://jumia-clone.onlinewebshop.net/apis/';
   static String userRegisterEndPoint = 'customer/register';
   static String userLoginEndPoint = 'customer/login';

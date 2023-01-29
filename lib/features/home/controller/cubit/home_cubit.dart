@@ -123,16 +123,27 @@ class HomeCubit extends Cubit<HomeState> {
     Either<Failure, List<ProductsDataModel>> result =
         await baseFavoriteRepository.addOrRemoveFromFavorite(productId, token);
     result.fold((l) {
-      favTrendingValues[productId.toString()] =
-          !favTrendingValues[productId.toString()]!;
-      favBestOffersValues[productId.toString()] =
-          !favBestOffersValues[productId.toString()]!;
-      favBestSellerValues[productId.toString()] =
-          !favBestSellerValues[productId.toString()]!;
-      favTopRatedValues[productId.toString()] =
-          !favTopRatedValues[productId.toString()]!;
-      favNewArrivalValues[productId.toString()] =
-          !favNewArrivalValues[productId.toString()]!;
+      if (favTrendingValues.keys.contains(productId.toString())) {
+        favTrendingValues[productId.toString()] =
+            !favTrendingValues[productId.toString()]!;
+      }
+
+      if (favBestOffersValues.keys.contains(productId.toString())) {
+        favBestOffersValues[productId.toString()] =
+            !favBestOffersValues[productId.toString()]!;
+      }
+      if (favBestSellerValues.keys.contains(productId.toString())) {
+        favBestSellerValues[productId.toString()] =
+            !favBestSellerValues[productId.toString()]!;
+      }
+      if (favTopRatedValues.keys.contains(productId.toString())) {
+        favTopRatedValues[productId.toString()] =
+            !favTopRatedValues[productId.toString()]!;
+      }
+      if (favNewArrivalValues.keys.contains(productId.toString())) {
+        favNewArrivalValues[productId.toString()] =
+            !favNewArrivalValues[productId.toString()]!;
+      }
       emit(AddOrRemoveFavHomePageError(l.message));
     }, (r) {
       /* FavoriteCubit.get(context).favList = r;

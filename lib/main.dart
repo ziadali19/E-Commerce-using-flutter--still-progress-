@@ -82,7 +82,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<SubCategoriesDetailsCubit>()),
         BlocProvider(create: (context) => sl<BrandDetailsCubit>()),
         BlocProvider(create: (context) => sl<AddressCubit>()),
-        BlocProvider(create: (context) => sl<MyAccountCubit>()),
+        BlocProvider(
+            create: (context) =>
+                sl<MyAccountCubit>()..getActiveUserData(token)),
         BlocProvider(create: (context) => sl<PaymentsCubit>()),
         BlocProvider(create: (context) => sl<OrdersCubit>())
       ],

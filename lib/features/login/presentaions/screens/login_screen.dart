@@ -1,5 +1,7 @@
 import 'package:e_commerce/core/utilis/cashe_helper.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
+import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
+import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/layouts/home_layout_screen.dart';
 import 'package:e_commerce/main.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/services/service_locator.dart';
 
+import '../../../favorite/controller/cubit/favorite_cubit.dart';
+import '../../../settings/controller/cubit/address_cubit.dart';
+import '../../../settings/controller/cubit/my_account_cubit.dart';
+import '../../../settings/controller/cubit/orders_cubit.dart';
 import '../../controller/cubit/login_cubit.dart';
 import '../../controller/cubit/login_state.dart';
 import '../components/going_to_signup.dart';
@@ -47,10 +53,16 @@ class LoginScreen extends StatelessWidget {
                                 LoginCubit.get(context).model?.accessToken)
                             .then((value) {
                           token = LoginCubit.get(context).model?.accessToken;
+
                           Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(
                             builder: (context) => const HomeLayoutScreen(),
                           ));
+                          HomeCubit.get(context).getActiveUserData(token);
+                          HomeCubit.get(context).getHomeProducts();
+                          CartCubit.get(context).getUserCart(token);
+                          FavoriteCubit.get(context).getFavorites(token!, 1);
+                          MyAccountCubit.get(context).getActiveUserData(token);
                         });
                       }
                       if (state is LoginError) {

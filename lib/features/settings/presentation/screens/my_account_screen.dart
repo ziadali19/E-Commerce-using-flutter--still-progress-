@@ -2,6 +2,7 @@ import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/core/utilis/cashe_helper.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
+import 'package:e_commerce/features/home/controller/cubit/home_layout_cubit.dart';
 import 'package:e_commerce/features/login/presentaions/screens/login_screen.dart';
 import 'package:e_commerce/features/settings/controller/cubit/orders_cubit.dart';
 import 'package:e_commerce/features/settings/presentation/screens/address_screen.dart';
@@ -10,7 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:e_commerce/core/services/service_locator.dart';
 
+import '../../../cart/controller/cubit/cart_cubit.dart';
+import '../../../favorite/controller/cubit/favorite_cubit.dart';
 import '../../controller/cubit/address_cubit.dart';
 import '../../controller/cubit/my_account_cubit.dart';
 
@@ -31,6 +35,8 @@ class MyAccountScreen extends StatelessWidget {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => const LoginScreen(),
           ));
+
+          HomeLayoutCubit.get(context).currentIndex = 0;
         }
       },
       builder: (context, state) {
@@ -40,15 +46,24 @@ class MyAccountScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Hello ${HomeCubit.get(context).userModel!.data.name!}',
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                HomeCubit.get(context).userModel!.data.email!,
-                style:
-                    TextStyle(fontSize: 15.sp, fontWeight: FontWeight.normal),
-              ),
+              state is MyAccountGetActiveUserDataLoading
+                  ? const LinearProgressIndicator(
+                      color: AppConstants.primaryColor)
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hello ${cubit.userModel!.data.name!}',
+                          style: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          cubit.userModel!.data.email!,
+                          style: TextStyle(
+                              fontSize: 15.sp, fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    ),
               Container(
                 color: AppConstants.primaryColor,
                 width: double.infinity,
