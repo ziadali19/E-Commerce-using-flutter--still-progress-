@@ -1,10 +1,12 @@
+// ignore_for_file: unused_catch_clause, avoid_function_literals_in_foreach_calls
+
 import 'package:dio/dio.dart';
 import 'package:e_commerce/features/settings/data/model/orders_details_model.dart';
 
 import '../../../../core/network/dio_helper.dart';
 import '../../../../core/network/network_exception.dart';
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
+
 import '../model/address_model.dart';
 
 abstract class BaseSettingsRemoteDataSource {

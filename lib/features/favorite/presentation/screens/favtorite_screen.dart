@@ -1,13 +1,12 @@
-import 'package:e_commerce/features/categories/controller/cubit/category_details_cubit.dart';
 import 'package:e_commerce/features/favorite/presentation/components/favorite_shimmer_effect.dart';
-import 'package:e_commerce/features/home/presentation/screens/home_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
+
 import '../../../categories/presentaion/components/category_product_item.dart';
 import '../../controller/cubit/favorite_cubit.dart';
 

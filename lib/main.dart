@@ -6,8 +6,7 @@ import 'package:e_commerce/features/categories/controller/cubit/categories_cubit
 
 import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/controller/cubit/home_layout_cubit.dart';
-import 'package:e_commerce/features/home/presentation/layouts/home_layout_screen.dart';
-import 'package:e_commerce/features/login/presentaions/screens/login_screen.dart';
+
 import 'package:e_commerce/features/splash/presentation/screens/splash_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ import 'features/favorite/controller/cubit/favorite_cubit.dart';
 
 import 'features/filter/controller/cubit/filter_cubit.dart';
 import 'features/forget password/controller/cubit/forget_cubit.dart';
-import 'features/onboarding/presentation/screens/onboarding_screen.dart';
+
 import 'features/payments/controller/cubit/payments_cubit.dart';
 import 'features/product/controller/cubit/products_cubit.dart';
 import 'features/search/controller/cubit/search_cubit.dart';

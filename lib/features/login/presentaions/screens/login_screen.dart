@@ -3,16 +3,16 @@ import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/layouts/home_layout_screen.dart';
-import 'package:e_commerce/main.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/services/service_locator.dart';
 
 import '../../../favorite/controller/cubit/favorite_cubit.dart';
-import '../../../settings/controller/cubit/address_cubit.dart';
+
 import '../../../settings/controller/cubit/my_account_cubit.dart';
-import '../../../settings/controller/cubit/orders_cubit.dart';
+
 import '../../controller/cubit/login_cubit.dart';
 import '../../controller/cubit/login_state.dart';
 import '../components/going_to_signup.dart';

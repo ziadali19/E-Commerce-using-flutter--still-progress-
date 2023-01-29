@@ -1,14 +1,11 @@
-import 'dart:ui';
-
 import 'package:e_commerce/core/utilis/constants.dart';
-import 'package:e_commerce/features/categories/controller/cubit/category_details_cubit.dart';
+
 import 'package:e_commerce/features/favorite/controller/cubit/favorite_cubit.dart';
 import 'package:e_commerce/features/filter/controller/cubit/filter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../main.dart';
 import '../../../filter/presentation/screens/filter_screen.dart';
 import '../../../search/presentaion/screens/search_screen.dart';
 import '../../controller/cubit/home_layout_cubit.dart';

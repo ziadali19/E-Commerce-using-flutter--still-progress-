@@ -29,7 +29,7 @@ class GoingToLogin extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => LoginScreen(),
+              builder: (context) => const LoginScreen(),
             ));
           },
           child: Text(

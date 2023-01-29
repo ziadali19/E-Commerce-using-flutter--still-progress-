@@ -7,7 +7,6 @@ import 'package:e_commerce/features/home/data/remote_data_source/home_remote_dat
 
 import '../model/active_user_model.dart';
 import '../model/home_products_model.dart';
-import '../model/product_details_model.dart';
 
 abstract class HomeBaseRepository {
   Future<Either<Failure, ActiveUserModel>> getActiveUserData(token);

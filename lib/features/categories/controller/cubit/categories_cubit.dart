@@ -1,12 +1,8 @@
-import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
-import 'package:e_commerce/core/network/network_exception.dart';
-import 'package:e_commerce/features/categories/data/models/category_details_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/categories/data/models/sub_category_main_info_model.dart';
 import 'package:e_commerce/features/categories/data/repository/category_repository.dart';
-import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

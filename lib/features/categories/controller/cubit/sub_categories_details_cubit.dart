@@ -1,11 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/failure.dart';
-import '../../../../core/services/service_locator.dart';
+
 import '../../../favorite/controller/cubit/favorite_cubit.dart';
 import '../../../favorite/data/repository/favorite_repository.dart';
 import '../../../home/data/model/product_details_model.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:dio/dio.dart';
 import 'package:e_commerce/core/network/dio_helper.dart';
 import 'package:e_commerce/core/network/network_exception.dart';

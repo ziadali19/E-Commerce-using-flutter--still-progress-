@@ -1,5 +1,3 @@
-import 'package:dartz/dartz.dart';
-
 class OrderSuccessModel {
   final String? curruencyType;
   final num? orderId;

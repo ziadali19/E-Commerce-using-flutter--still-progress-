@@ -3,7 +3,6 @@ import 'package:e_commerce/core/network/dio_helper.dart';
 import 'package:e_commerce/core/network/network_exception.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/payments/data/model/order_success_model.dart';
-import 'package:e_commerce/main.dart';
 
 abstract class BasePaymentsRemoteDataSource {
   Future<OrderSuccessModel> makeCheckout(String? paymentType, String? country,

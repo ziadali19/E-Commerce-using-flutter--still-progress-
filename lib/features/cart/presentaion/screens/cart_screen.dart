@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentaion/components/cart_shimmer_effect.dart';
@@ -7,10 +5,9 @@ import 'package:e_commerce/features/payments/presentation/screens/checkout_scree
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
+
 import '../components/list_view_item.dart';
 
 class CartScreen extends StatelessWidget {
@@ -148,6 +145,7 @@ class CartScreen extends StatelessWidget {
                                     onPressed: () async {
                                       await cubit.getAddress(context);
                                       if (cubit.addressModel != null) {
+                                        // ignore: use_build_context_synchronously
                                         Navigator.of(context)
                                             .push(MaterialPageRoute(
                                           builder: (context) =>

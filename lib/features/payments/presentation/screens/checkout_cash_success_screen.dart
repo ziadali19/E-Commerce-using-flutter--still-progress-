@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../main.dart';
 import '../../../settings/presentation/screens/orders_screen.dart';
 
 class CheckoutCashSuccessScreen extends StatelessWidget {

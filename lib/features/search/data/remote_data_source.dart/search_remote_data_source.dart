@@ -1,5 +1,7 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls, unused_catch_clause
+
 import 'package:dio/dio.dart';
-import 'package:dio/src/response.dart';
+
 import 'package:e_commerce/features/home/data/model/product_details_model.dart';
 
 import '../../../../core/network/dio_helper.dart';

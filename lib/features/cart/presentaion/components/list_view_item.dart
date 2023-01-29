@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
+
 import '../../controller/cubit/cart_cubit.dart';
 
 class ListViewItem extends StatelessWidget {
@@ -13,12 +13,10 @@ class ListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    // double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         CartCubit cubit = CartCubit.get(context);
         return Padding(

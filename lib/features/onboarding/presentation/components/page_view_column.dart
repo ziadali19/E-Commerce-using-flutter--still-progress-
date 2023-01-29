@@ -63,8 +63,8 @@ class PageViewColumn extends StatelessWidget {
                     curve: Curves.easeInOutExpo);
                 if (cubit.pageIndex == 2) {
                   CasheHelper.saveData('onBoarding', true).then((value) {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
                   });
                 }
               })

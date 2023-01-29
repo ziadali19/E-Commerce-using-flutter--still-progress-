@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/categories/presentaion/components/custom_app_bar.dart';

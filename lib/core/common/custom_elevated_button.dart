@@ -1,16 +1,16 @@
 import 'package:e_commerce/core/utilis/constants.dart';
-import 'package:e_commerce/features/onboarding/controller/cubit/on_boarding_cubit.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  int? index;
-  Function()? onPressed;
-  String? text;
+  final int? index;
+  final Function()? onPressed;
+  final String? text;
   CustomElevatedButton(
       {super.key, this.index, this.text, required this.onPressed});
-  List titles = ['Next', 'Next', 'Get Started'];
+  final List titles = ['Next', 'Next', 'Get Started'];
   @override
   Widget build(BuildContext context) {
     return SizedBox(

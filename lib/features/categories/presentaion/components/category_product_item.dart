@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:e_commerce/features/categories/controller/cubit/brand_details_cubit.dart';
 import 'package:e_commerce/features/categories/controller/cubit/sub_categories_details_cubit.dart';
 import 'package:e_commerce/features/favorite/controller/cubit/favorite_cubit.dart';
@@ -10,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
+
 import '../../controller/cubit/category_details_cubit.dart';
 import '../../data/models/category_details_model.dart';
 

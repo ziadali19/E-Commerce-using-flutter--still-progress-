@@ -1,5 +1,3 @@
-import 'package:dartz/dartz.dart';
-import 'package:e_commerce/core/network/error_message_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {

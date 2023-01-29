@@ -1,7 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class AppConstants {
   static String? token;
@@ -76,6 +78,7 @@ class MyBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);
+
     print('onCreate -- ${bloc.runtimeType}');
   }
 

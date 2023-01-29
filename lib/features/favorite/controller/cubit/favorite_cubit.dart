@@ -1,16 +1,16 @@
-import 'package:bloc/bloc.dart';
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce/features/categories/controller/cubit/category_details_cubit.dart';
+
 import 'package:e_commerce/features/favorite/data/repository/favorite_repository.dart';
-import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
+
 import 'package:e_commerce/features/home/data/model/product_details_model.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
 
 part 'favorite_state.dart';
 
@@ -36,7 +36,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       favList.forEach((element) {
         favValues.addAll({element.productId.toString(): element.favorite});
       });
-      print(favValues);
+
       emit(AddOrRemoveFavSuccess());
     });
   }
@@ -56,7 +56,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       favList.forEach((element) {
         favValues.addAll({element.productId.toString(): element.favorite});
       });
-      print(favValues);
+
       emit(GetFavProductsSuccess());
     });
   }

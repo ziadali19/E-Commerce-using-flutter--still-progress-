@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/forget%20password/data/repository/forget_repository.dart';

@@ -2,7 +2,7 @@ import 'package:e_commerce/features/cart/data/models/cart_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/cart/data/repository/cart_repository.dart';
-import 'package:e_commerce/features/home/controller/cubit/home_layout_cubit.dart';
+
 import 'package:e_commerce/features/payments/controller/cubit/payments_cubit.dart';
 
 import 'package:e_commerce/features/settings/data/model/address_model.dart';

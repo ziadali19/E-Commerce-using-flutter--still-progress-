@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
 import '../../../../core/utilis/constants.dart';
-import '../../../../main.dart';
+
 import '../../../categories/presentaion/components/custom_app_bar.dart';
 import '../../controller/cubit/products_cubit.dart';
 import '../components/bottom_sheet_item.dart';

@@ -2,10 +2,9 @@ import 'package:e_commerce/core/utilis/constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../main.dart';
 import '../../controller/cubit/home_layout_cubit.dart';
 import '../components/home_layout_appbar.dart';
 

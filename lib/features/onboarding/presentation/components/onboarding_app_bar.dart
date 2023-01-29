@@ -11,7 +11,7 @@ AppBar onBoardingAppBar(BuildContext context) {
           onPressed: () {
             CasheHelper.saveData('onBoarding', true).then((value) {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => LoginScreen()));
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
             });
           },
           child: Text(

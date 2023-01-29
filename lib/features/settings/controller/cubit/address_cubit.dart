@@ -1,10 +1,8 @@
-import 'package:bloc/bloc.dart';
-import 'package:e_commerce/features/payments/controller/cubit/payments_cubit.dart';
 import 'package:e_commerce/features/settings/data/model/address_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/settings/data/repository/settings_repository.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'address_state.dart';

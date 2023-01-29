@@ -1,17 +1,15 @@
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/favorite/controller/cubit/favorite_cubit.dart';
 import 'package:e_commerce/features/favorite/data/repository/favorite_repository.dart';
-import 'package:e_commerce/features/filter/controller/cubit/filter_cubit.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/failure.dart';
-import '../../../../core/services/service_locator.dart';
+
 import '../../../home/data/model/product_details_model.dart';
 import '../../data/models/category_details_model.dart';
-import '../../data/models/sub_category_details_model.dart';
+
 import '../../data/repository/category_repository.dart';
 
 part 'category_details_state.dart';
@@ -47,7 +45,7 @@ class CategoryDetailsCubit extends Cubit<CategoryDetailsState> {
       for (var e in categoryDetailsModel!.products) {
         favValues.addAll({e.productId.toString(): e.favorite});
       }
-      print(favValues);
+
       emit(GetCategoryDetailSuccess());
     });
   }

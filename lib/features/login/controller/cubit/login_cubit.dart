@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/login/data/repository/login_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/network/failure.dart';
 import '../../data/model/login_model.dart';

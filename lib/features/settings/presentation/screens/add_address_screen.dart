@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
@@ -66,6 +68,7 @@ class AddAddressScreen extends StatelessWidget {
                             if (value!.trim().isEmpty) {
                               return 'Please Enter Your Country';
                             }
+                            return null;
                           },
                         ),
                         SizedBox(
@@ -82,6 +85,7 @@ class AddAddressScreen extends StatelessWidget {
                             if (value!.trim().isEmpty) {
                               return 'Please Enter Your Governorate';
                             }
+                            return null;
                           },
                         ),
                         SizedBox(
@@ -98,6 +102,7 @@ class AddAddressScreen extends StatelessWidget {
                             if (value!.trim().isEmpty) {
                               return 'Please Enter Your City';
                             }
+                            return null;
                           },
                         ),
                         SizedBox(
@@ -114,6 +119,7 @@ class AddAddressScreen extends StatelessWidget {
                             if (value!.trim().isEmpty) {
                               return 'Please Enter Your Address Details';
                             }
+                            return null;
                           },
                         ),
                         SizedBox(

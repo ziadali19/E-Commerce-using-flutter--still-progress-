@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/search/controller/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,10 +11,10 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType textInputType;
   final String hintText;
-  LoginCubit? cubit;
-  SearchCubit? searchCubit;
-  String? assetName;
-  CustomTextField(
+  final LoginCubit? cubit;
+  final SearchCubit? searchCubit;
+  final String? assetName;
+  const CustomTextField(
       {super.key,
       this.searchCubit,
       required this.controller,

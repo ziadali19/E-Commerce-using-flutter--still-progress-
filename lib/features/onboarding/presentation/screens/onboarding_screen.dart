@@ -10,7 +10,9 @@ import '../components/onboarding_app_bar.dart';
 import '../components/page_view_column.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  PageController pageController = PageController();
+  final PageController pageController = PageController();
+
+  OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

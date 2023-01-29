@@ -1,10 +1,9 @@
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../features/login/controller/cubit/login_cubit.dart';
 import '../../features/register/controller/cubit/register_cubit.dart';
 
 class CustomTextFieldR extends StatelessWidget {
@@ -13,9 +12,9 @@ class CustomTextFieldR extends StatelessWidget {
   final TextEditingController? passConfirmcontroller;
   final TextInputType textInputType;
   final String hintText;
-  RegisterCubit? cubit;
-  String? assetName;
-  CustomTextFieldR(
+  final RegisterCubit? cubit;
+  final String? assetName;
+  const CustomTextFieldR(
       {super.key,
       required this.controller,
       required this.hintText,

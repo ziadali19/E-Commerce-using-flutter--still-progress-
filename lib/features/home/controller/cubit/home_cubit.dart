@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
-import 'package:e_commerce/features/favorite/controller/cubit/favorite_cubit.dart';
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:e_commerce/features/home/data/model/active_user_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -7,13 +7,11 @@ import 'package:e_commerce/features/home/data/model/categories_model.dart';
 import 'package:e_commerce/features/home/data/model/home_products_model.dart';
 import 'package:e_commerce/features/home/data/model/product_details_model.dart';
 import 'package:e_commerce/features/home/data/repository/home_repository.dart';
-import 'package:e_commerce/features/home/presentation/layouts/home_layout_screen.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../favorite/data/repository/favorite_repository.dart';
-import '../../presentation/screens/home_screen.dart';
 
 part 'home_state.dart';
 

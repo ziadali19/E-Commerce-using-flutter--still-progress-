@@ -1,9 +1,10 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:dio/dio.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/home/data/model/active_user_model.dart';
 import 'package:e_commerce/features/home/data/model/categories_model.dart';
 import 'package:e_commerce/features/home/data/model/home_products_model.dart';
-import 'package:e_commerce/features/home/data/model/product_details_model.dart';
 
 import '../../../../core/network/dio_helper.dart';
 import '../../../../core/network/network_exception.dart';

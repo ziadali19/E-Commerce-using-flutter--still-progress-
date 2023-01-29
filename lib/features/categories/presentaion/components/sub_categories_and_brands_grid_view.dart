@@ -1,7 +1,6 @@
 import 'package:e_commerce/features/categories/controller/cubit/category_details_cubit.dart';
 import 'package:e_commerce/features/categories/data/models/category_details_model.dart';
-import 'package:e_commerce/features/categories/presentaion/screens/categories_screen.dart';
-import 'package:e_commerce/features/home/data/model/categories_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +15,7 @@ import '../screens/category_details_screen.dart';
 import '../screens/sub_category_screen.dart';
 
 class SubCategoriesAndBrandsGridView extends StatelessWidget {
-  SubCategoriesAndBrandsGridView(
+  const SubCategoriesAndBrandsGridView(
       {Key? key,
       required this.header,
       required this.itemCount,
@@ -29,8 +28,8 @@ class SubCategoriesAndBrandsGridView extends StatelessWidget {
   final List lst;
 
   final int? itemCount;
-  CategoryDetailsModel? categoryDetailsModel;
-  SubCategoryDetailsModel? subCategoryDetailsModel;
+  final CategoryDetailsModel? categoryDetailsModel;
+  final SubCategoryDetailsModel? subCategoryDetailsModel;
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,13 @@
 import 'package:e_commerce/core/utilis/constants.dart';
 import 'package:e_commerce/features/categories/presentaion/components/category_details_shimmer_effect.dart';
-import 'package:e_commerce/features/categories/presentaion/components/category_shimmer_effect.dart';
+
 import 'package:e_commerce/features/categories/presentaion/components/sub_categories_and_brands_grid_view.dart';
-import 'package:e_commerce/features/categories/presentaion/screens/category_details_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../controller/cubit/categories_cubit.dart';
-import '../../controller/cubit/category_details_cubit.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});

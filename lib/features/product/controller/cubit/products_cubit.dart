@@ -1,10 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:e_commerce/features/cart/controller/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/product/data/models/product_details_model.dart';
 import 'package:e_commerce/core/network/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/product/data/repository/product_repository.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

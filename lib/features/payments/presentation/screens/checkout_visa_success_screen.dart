@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../../main.dart';
 import '../../../cart/controller/cubit/cart_cubit.dart';
 import '../../../home/presentation/layouts/home_layout_screen.dart';
 

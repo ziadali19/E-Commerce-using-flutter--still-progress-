@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/common/custom_elevated_button.dart';
 import 'package:e_commerce/core/utilis/cashe_helper.dart';
 import 'package:e_commerce/core/utilis/constants.dart';
-import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
+
 import 'package:e_commerce/features/home/controller/cubit/home_layout_cubit.dart';
 import 'package:e_commerce/features/login/presentaions/screens/login_screen.dart';
 import 'package:e_commerce/features/settings/controller/cubit/orders_cubit.dart';
@@ -11,10 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:e_commerce/core/services/service_locator.dart';
 
-import '../../../cart/controller/cubit/cart_cubit.dart';
-import '../../../favorite/controller/cubit/favorite_cubit.dart';
 import '../../controller/cubit/address_cubit.dart';
 import '../../controller/cubit/my_account_cubit.dart';
 

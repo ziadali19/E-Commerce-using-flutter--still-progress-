@@ -19,15 +19,6 @@ class RegisterScreen extends StatelessWidget {
   final TextEditingController phoneController = TextEditingController();
 
   @override
-  void dispose() {
-    emailController.dispose();
-    nameController.dispose();
-    passConfirmController.dispose();
-    passController.dispose();
-    phoneController.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
@@ -55,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                             context,
                             Colors.green);
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => const LoginScreen(),
                         ));
                       }
                       if (state is RegisterError) {

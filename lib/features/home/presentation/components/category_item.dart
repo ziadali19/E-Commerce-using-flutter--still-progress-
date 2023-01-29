@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../categories/controller/cubit/categories_cubit.dart';
 import '../../../categories/controller/cubit/category_details_cubit.dart';
 import '../../../categories/presentaion/screens/category_details_screen.dart';
 import '../../controller/cubit/home_cubit.dart';
