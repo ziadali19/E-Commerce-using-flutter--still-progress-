@@ -97,14 +97,14 @@ class FilterScreen extends StatelessWidget {
                                       : Colors.grey[300],
                                   cubit: cubit,
                                   index: index,
-                                  onTap: () {
+                                  onTap: () async {
                                     cubit.changeCategoryCardColor();
                                     subCategory = '';
                                     brand = '';
                                     subCategoryId = '';
                                     brandId = '';
                                     cubit.subCategoryDetailsModel = null;
-                                    cubit.categoryDetails(
+                                    await cubit.categoryDetails(
                                         cubit.categoriesList[index].id);
                                     cubit.subCategoryVisibilty();
 
@@ -180,7 +180,7 @@ class FilterScreen extends StatelessWidget {
                                     ],
                                   )
                                 : const Center(
-                                    child: CircularProgressIndicator(),
+                                    child: LinearProgressIndicator(),
                                   ),
                           ),
                           SizedBox(
@@ -203,8 +203,7 @@ class FilterScreen extends StatelessWidget {
                                       ),
                                       cubit.isLoading == true
                                           ? const Center(
-                                              child:
-                                                  CircularProgressIndicator())
+                                              child: LinearProgressIndicator())
                                           : SizedBox(
                                               height: 50.h,
                                               child: ListView.builder(
@@ -278,7 +277,7 @@ class FilterScreen extends StatelessWidget {
                                     ],
                                   )
                                 : const Center(
-                                    child: CircularProgressIndicator(),
+                                    child: LinearProgressIndicator(),
                                   ),
                           ),
                           const Text(
@@ -377,7 +376,7 @@ class FilterScreen extends StatelessWidget {
                           ),
                           state is GetFilteredListLoading
                               ? const Center(
-                                  child: CircularProgressIndicator(),
+                                  child: LinearProgressIndicator(),
                                 )
                               : state is GetFilteredListSuccess &&
                                       cubit.filteredList.isNotEmpty
