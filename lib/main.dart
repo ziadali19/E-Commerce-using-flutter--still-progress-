@@ -8,6 +8,7 @@ import 'package:e_commerce/features/home/controller/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/controller/cubit/home_layout_cubit.dart';
 import 'package:e_commerce/features/home/presentation/layouts/home_layout_screen.dart';
 import 'package:e_commerce/features/login/presentaions/screens/login_screen.dart';
+import 'package:e_commerce/features/splash/presentation/screens/splash_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -97,11 +98,13 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.light,
             theme: Themes().lightTheme(),
-            home: onBoarding == true
+            home:
+                const SplashScreen() /*onBoarding == true
                 ? (token != null
                     ? const HomeLayoutScreen()
                     : const LoginScreen())
-                : OnBoardingScreen(),
+                : OnBoardingScreen()*/
+            ,
           );
         },
       ),

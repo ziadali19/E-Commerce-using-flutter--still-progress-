@@ -224,33 +224,50 @@ class FilterScreen extends StatelessWidget {
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
-                                                  return FilterListViewItem(
-                                                      cubit: cubit,
-                                                      index: index,
-                                                      onTap: () {
-                                                        cubit
-                                                            .changeBrandCardColor();
-                                                        cubit.subCategoryDetailsModel ==
-                                                                null
-                                                            ? brandId = cubit
+                                                  return cubit.subCategoryDetailsModel ==
+                                                          null
+                                                      ? FilterListViewItem(
+                                                          cubit: cubit,
+                                                          index: index,
+                                                          onTap: () {
+                                                            cubit
+                                                                .changeBrandCardColor();
+                                                            brandId = cubit
                                                                 .categoryDetailsModel!
                                                                 .brands[index]
-                                                                .id
-                                                            : brandId = cubit
-                                                                .subCategoryDetailsModel!
-                                                                .brands[index]
                                                                 .id;
-                                                        brand = 'brand';
-                                                      },
-                                                      color: cubit.brandClicked ==
+
+                                                            brand = 'brand';
+                                                          },
+                                                          color: cubit.brandClicked ==
                                                                       true &&
                                                                   brandId ==
                                                                       cubit
                                                                           .categoryDetailsModel!
                                                                           .brands[
                                                                               index]
-                                                                          .id ||
-                                                              cubit.brandClicked ==
+                                                                          .id
+                                                              ? AppConstants
+                                                                  .primaryColor
+                                                              : Colors
+                                                                  .grey[300],
+                                                          name: cubit
+                                                              .categoryDetailsModel!
+                                                              .brands[index]
+                                                              .name!)
+                                                      : FilterListViewItem(
+                                                          cubit: cubit,
+                                                          index: index,
+                                                          onTap: () {
+                                                            cubit
+                                                                .changeBrandCardColor();
+                                                            brandId = cubit
+                                                                .subCategoryDetailsModel!
+                                                                .brands[index]
+                                                                .id;
+                                                            brand = 'brand';
+                                                          },
+                                                          color: cubit.brandClicked ==
                                                                       true &&
                                                                   brandId ==
                                                                       cubit
@@ -258,17 +275,12 @@ class FilterScreen extends StatelessWidget {
                                                                           .brands[
                                                                               index]
                                                                           .id
-                                                          ? AppConstants
-                                                              .primaryColor
-                                                          : Colors.grey[300],
-                                                      name: cubit.subCategoryDetailsModel !=
-                                                              null
-                                                          ? cubit
+                                                              ? AppConstants
+                                                                  .primaryColor
+                                                              : Colors
+                                                                  .grey[300],
+                                                          name: cubit
                                                               .subCategoryDetailsModel!
-                                                              .brands[index]
-                                                              .name!
-                                                          : cubit
-                                                              .categoryDetailsModel!
                                                               .brands[index]
                                                               .name!);
                                                 },
