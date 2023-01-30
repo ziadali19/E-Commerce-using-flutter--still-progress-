@@ -1,16 +1,32 @@
-# e_commerce
+# Storeino E-Commerce Application
 
-A new Flutter project.
+I'm happy to share my new E-Commerce Application (Customer version) 
+- All functions is handled with API
+- Admin & Seller Panel and Backend is done by https://github.com/samir-hussein (PHP Laravel) 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## ■ Customer App features 
 
-A few resources to get you started if this is your first Flutter project:
+- Payment integration with Paymob (Visa - Mastercard - ميزة meeza)
+- Responsive Ui
+- bloc state management (cubit)
+- Handling API errors professionally by using Dio and dartz
+- MVVC design pattern
+- Using repository pattern
+- Dependency injection with get it
+- Save user data by shared preferences
+- Shimmers effect 
+- Lazy scroll pagination
+- Filter products by categories, sub categories, brands and price
+- Search products screen
+- Favorite products screen
+- Orders screen
+- Addresses screen
+- Cart and checkout screens
+- Product Reviews and rating
+- On Boarding screens
+- Splash screen
+- Authentication (email and password)
+- Forget and reset password 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+● Logo and Ui kit from FigmaUi4Free
