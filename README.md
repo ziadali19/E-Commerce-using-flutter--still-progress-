@@ -2,7 +2,7 @@
 
 I'm happy to share my new E-Commerce Application (Customer version) 
 - All functions is handled with API
-- Admin & Seller Panel and Backend is done by https://github.com/samir-hussein (PHP Laravel) 
+- Admin & Seller Panel and Backend is done by https://github.com/samir-hussein/ecommerce-APIs
 
 Application Video Review >> https://drive.google.com/file/d/1yz0p8GjvCteS-dKw3SwLZ49jlUzuSkaq/view?usp=sharing
 
