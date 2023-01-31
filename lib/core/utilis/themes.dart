@@ -8,8 +8,6 @@ class Themes {
   ThemeData lightTheme() {
     return ThemeData(
         primaryColorLight: AppConstants.primaryColor,
-        colorScheme:
-            const ColorScheme.light(primary: AppConstants.primaryColor),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
             selectedItemColor: AppConstants.primaryColor,
             unselectedItemColor: Colors.black,
@@ -25,7 +23,6 @@ class Themes {
             style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 foregroundColor: MaterialStateProperty.all(Colors.black))),
-        backgroundColor: AppConstants.backgroundColor,
         primaryColor: AppConstants.primaryColor,
         brightness: Brightness.light,
         fontFamily: 'Gordita',
@@ -34,6 +31,8 @@ class Themes {
             backgroundColor: AppConstants.backgroundColor,
             elevation: 0,
             iconTheme: IconThemeData(color: Colors.black),
-            systemOverlayStyle: SystemUiOverlayStyle.dark));
+            systemOverlayStyle: SystemUiOverlayStyle.dark),
+        colorScheme: const ColorScheme.light(primary: AppConstants.primaryColor)
+            .copyWith(background: AppConstants.backgroundColor));
   }
 }
